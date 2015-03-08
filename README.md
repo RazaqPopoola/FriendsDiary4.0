@@ -1,0 +1,1 @@
+# FriendsDiary4.0
