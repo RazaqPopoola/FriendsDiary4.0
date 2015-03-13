@@ -59,7 +59,7 @@
 		clear: both;
 	}	
 	
-	.container{
+	.gcontainer{
 		max-width: 940px;
 		padding: 10px;
 		background: #f0f0f0;
