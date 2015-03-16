@@ -1,5 +1,7 @@
 <?php 
+
 	include('config/setup.php'); 
+	loggedInRedirect();
 	
 	if (empty($_POST) === false) {
 		

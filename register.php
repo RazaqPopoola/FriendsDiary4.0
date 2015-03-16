@@ -1,7 +1,7 @@
 <?php 
 	
 	include('config/setup.php');
-	
+	loggedInRedirect();
 	
 	if (empty($_POST) === false) {
 		
@@ -66,26 +66,30 @@
 			
 			<?php 
 				
-				if(empty($_POST) === false && empty($errors) === true){
+				if(isset($_GET['success']) && empty($_GET['success'])){
 					
-					$registerData = array(
-					
-						'username' => $_POST['username'],
-						'password' => $_POST['password'],
-						'fName' => $_POST['fName'],
-						'lname' => $_POST['lName'],
-						'email' => $_POST['email']
-					);
-					
-					registerMember($registerData);
-					header('Location: ');
-				}else if(empty($errors) === false){
-					
-					echo outputErrors($errors);
-				}
+					echo 'Welcome to FriendsDiary your regissration is successful';
+				}else{
+				
+					if(empty($_POST) === false && empty($errors) === true){
+						
+						$registerData = array(
+						
+							'username' => $_POST['username'],
+							'password' => $_POST['password'],
+							'fName' => $_POST['fName'],
+							'lName' => $_POST['lName'],
+							'email' => $_POST['email']
+						);
+						
+						registerMember($registerData);
+						header('Location: register.php?success');
+					}else if(empty($errors) === false){
+						
+						echo outputErrors($errors);
+					}
 			
 			?>
-			
 			<div class="container">
 				<div class="row"> 
 					<div class="col-md-4 col-md-offset-4"> 
@@ -105,10 +109,10 @@
 										<input type="password" class="form-control" name="password_again"  placeholder="Enter Your Password Again">
 									</div>
 									<div class="form-group">
-										<input type="text" class="form-control" name="firstname"  placeholder="Enter Your Full First Names">
+										<input type="text" class="form-control" name="fName"  placeholder="Enter Your Full First Names">
 									</div>
 									<div class="form-group">
-										<input type="text" class="form-control" name="lastname"  placeholder="Enter Your Full Last Name">
+										<input type="text" class="form-control" name="lName"  placeholder="Enter Your Full Last Name">
 									</div>
 									<div class="form-group">
 										<input type="text" class="form-control" name="email"  placeholder="Enter Your Acitive Email">
@@ -116,6 +120,7 @@
 									
 									<input type="submit" class="btn btn-success" value="Register">
 								</form>
+								<?php } ?>
 							</div><!--- End panel body -->	
 						</div>	<!--- End panel-->
 					</div><!--- End Col-->
@@ -126,4 +131,5 @@
 	<footer>
 		<?php include('template/footer.php') ?>
 	</footer>
+	
 </html>

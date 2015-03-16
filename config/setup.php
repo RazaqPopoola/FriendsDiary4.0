@@ -7,14 +7,15 @@
 	require 'functions/security.php';
 	require 'functions/member.php';
 
-	$errors = array();
+	
 	
 	if(loggedIn() === true) {
 		
-		$session_user_id = $_SESSION['user_id'];
-		$userData = patient_data($session_user_id, 'user_id', 'username', 'password', 'first_name', 'last_name', 'email');
+		
+		$sessionMemberID = $_SESSION['memberID'];
+		$memberData = memberData($sessionMemberID, 'memberID', 'username', 'password', 'email', 'fName', 'lName');
 	
-		if (userActive($user_data['username']) === false){
+		if (userActive($memberData['username']) === false){
 		
 			session_destroy();
 			header('Location: index.php');
@@ -28,5 +29,7 @@
 		exit();
 	}*/
 }
+	
+	$errors = array();
 	
 ?>

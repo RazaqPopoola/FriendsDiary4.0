@@ -62,19 +62,29 @@
 		$password = md5($password);
 		return (mysql_result(mysql_query("SELECT COUNT(`memberID`) FROM `members` WHERE `username` = '$username' AND `password` = '$password'"), 0) == 1) ? $user_id : false;
 	
+	}
+	
 	function registerMember($registerData) {
 		
-		arrayCheck($registerData, 'arraySanitize');
+		array_walk($registerData, 'arraySanitize');
 		$registerData['password'] = md5($registerData['password']);
 
 		$fields = '`' . implode('`, `', array_keys($registerData)) . '`';
 		$data = '\'' . implode('\', \'', $registerData) . '\'';
 
 		mysql_query("INSERT INTO `members` ($fields) VALUES ($data)");
-		//email($register_data['email'], 'Activate your account', "Hello " . $register_data['first_name'] . ", \n\nYou need to activate your account, therefore use the link below:\n\nhttp://localhost/diabetes/activate.php?email=" . $register_data['email'] . "&email_code=" . $register_data['email_code'] . "\n\n- Diabetes Management System");
+		//email($registerData['email'], 'Activate your account', "Hello " . $registerData['first_name'] . ", \n\nYou need to activate your account, therefore use the link below:\n\nhttp://localhost/FsDProject/activate.php?email=" . $registerData['email'] . "&email_code=" . $registerData['email_code'] . "\n\n- Diabetes Management System");
 	}
 	
-}
+	
+	function changePassword($memberID, $password) {
+		
+		$memberID = (int) $memberID;
+		$password = md5($password);
+
+		mysql_query("UPDATE `members` SET `password` = '$password' WHERE `memberID` = $memberID");
+	}
+
 	
 	
 	

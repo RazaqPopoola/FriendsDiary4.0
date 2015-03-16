@@ -1,6 +1,4 @@
 
-
-
 <nav class="navbar navbar-inverse navbar-static-top">
 	
 	<div class="container">
@@ -17,7 +15,7 @@
 		<div class="pull-right">
 			<ul class="nav navbar-nav">
 				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown<b class="caret"></b></a>
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $memberData['fName']; ?><b class="caret"></b></a>
 					<ul class="dropdown-menu">
 						<li><a href="logout.php">logout</a></li>
 						<li><a href="update.php">Update</a></li>
