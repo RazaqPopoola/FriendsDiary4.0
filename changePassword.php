@@ -1,10 +1,11 @@
 <?php
 
-	include('config/setup.php');
+	include('config/setup.php'); 
 	//securePage();
 	
 	if(empty($_POST) === false) {
-		//global $memberData;
+		
+		
 		$requiredFields = array('currentPassword', 'password', 'passwordAgain');
 		foreach($_POST as $key=>$value) {
 			if(empty($value) && in_array($key, $requiredFields) === true) {
@@ -15,12 +16,15 @@
 		
 		
 		if (md5($_POST['currentPassword']) === $memberData['password']) {
+			
 			if (trim($_POST['password']) !== trim($_POST['passwordAgain'])) {
 				$errors[] = 'Your new passwords do not match';
 			}else if (strlen($_POST['password']) < 6) {
+				
 				$errors[] = 'Your password must be at least 6 characters';
 			}
 		} else {
+			
 			$errors[] = 'Your current password is incorrect';
 		}
 		
@@ -44,10 +48,10 @@
 			<?php include('template/navigation.php') ?>;
 				<?php 
 				
-					//if(isset($_GET['success']) && empty($_GET['success'])){
+					if(isset($_GET['success']) && empty($_GET['success'])){
 					
-					//	echo 'Welcome to FriendsDiary your regissration is successful';
-					//}else{
+						echo 'Welcome to FriendsDiary your regissration is successful';
+					}else{
 				
 						if(empty($_POST) === false && empty($errors) === true){
 						
@@ -80,6 +84,7 @@
 										<input type="submit" class="btn btn-success" value="Change Password">
 								</form>
 								
+								<?php } ?>
 							</div><!--- End panel body -->	
 						</div>	<!--- End panel-->
 					</div><!--- End Col-->

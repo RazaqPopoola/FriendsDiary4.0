@@ -5,6 +5,10 @@
 		return mysql_real_escape_string($data);
 	}
 	
+	function email($to, $subject, $body) {
+		
+		mail($to, $subject, $body, 'From: razaqpopoola@gmail.com');
+	}
 	
 	function securePage(){
 		

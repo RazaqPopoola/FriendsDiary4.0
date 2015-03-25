@@ -5,6 +5,20 @@
 		return mysql_result(mysql_query("SELECT COUNT(`memberID`) FROM `members` WHERE `active` = 1"), 0);
 	}
 	
+	function activate($email, $email_code) {
+		$email 		=mysql_real_escape_string($email);
+		$email_code =mysql_real_escape_string($email_code);
+	
+		if (mysql_result(mysql_query("SELECT COUNT(`memberID`) FROM `members` WHERE `email` = '$email' AND `email_code` = '$email_code' AND `active` = 0"), 0) == 1) {
+			//Query to update user active status.
+			mysql_query("UPDATE `members` SET `active` = 1 WHERE `email` = '$email'");
+			return true;
+		} else  {
+			return false;
+		}
+	}
+	
+	
 	function memberData($memberID){
 		
 		$data = array();
@@ -73,7 +87,7 @@
 		$data = '\'' . implode('\', \'', $registerData) . '\'';
 
 		mysql_query("INSERT INTO `members` ($fields) VALUES ($data)");
-		//email($registerData['email'], 'Activate your account', "Hello " . $registerData['first_name'] . ", \n\nYou need to activate your account, therefore use the link below:\n\nhttp://localhost/FsDProject/activate.php?email=" . $registerData['email'] . "&email_code=" . $registerData['email_code'] . "\n\n- Diabetes Management System");
+		email($registerData['email'], 'Activate your account', "Hello " . $registerData['first_name'] . ", \n\nYou need to activate your account, therefore use the link below:\n\nhttp://localhost/FsDProject/activate.php?email=" . $registerData['email'] . "&email_code=" . $registerData['email_code'] . "\n\n- FriendsDiary Application");
 	}
 	
 	

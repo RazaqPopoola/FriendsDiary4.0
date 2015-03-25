@@ -68,7 +68,7 @@
 				
 				if(isset($_GET['success']) && empty($_GET['success'])){
 					
-					echo 'Welcome to FriendsDiary your regissration is successful';
+					echo 'Welcome to FriendsDiary your regissration is successful. Please activate your FriendsDairy account through your email.';
 				}else{
 				
 					if(empty($_POST) === false && empty($errors) === true){
@@ -77,9 +77,10 @@
 						
 							'username' => $_POST['username'],
 							'password' => $_POST['password'],
+							'email' => $_POST['email'],
+							'emailCode' => md5($_POST['emailCode'] + date()),
 							'fName' => $_POST['fName'],
-							'lName' => $_POST['lName'],
-							'email' => $_POST['email']
+							'lName' => $_POST['lName']
 						);
 						
 						registerMember($registerData);
