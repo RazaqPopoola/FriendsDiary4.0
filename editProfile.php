@@ -1,6 +1,6 @@
 <?php
 
-	include('config/setup.php'); 
+	include('config/init.php'); 
 	
 	if(empty($_POST) === false){
 		

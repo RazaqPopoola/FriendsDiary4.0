@@ -23,16 +23,16 @@
 				<p>You're free to log in!</p>
 				
 			<?php
-				} else if (isset($_GET['email'], $_GET['email_code']) === true) {
+				} else if (isset($_GET['email'], $_GET['emailCode']) === true) {
 					
 					$email 		= trim($_GET['email']);
-					$email_code = trim($_GET['email_code']);
+					$email_code = trim($_GET['emailCode']);
 	
 					if (emailExists($email) === false) {
 					
 						$errors[] = 'Oops, something went wrong, and we couldn\'t find that email address!';
 						
-					}else if (activate($email, $email_code) === false) {
+					}else if (activate($email, $emailCode) === false) {
 						
 						$errors[] = 'We had problems activating your account';
 					}

@@ -1,6 +1,6 @@
 <?php 
 	
-	include_once('config/setup.php'); 
+	include('config/init.php'); 
 ?>
 
 
@@ -14,7 +14,7 @@
 	</head>
 	<body>
 		<div id="wrap">
-			<?php include('template/navigation.php') ?>;
+		<?php include('template/contentNav.php') ?>;
 			<div class="container">
 				<div class="row">
 					<div class="col-md-3">
@@ -54,8 +54,7 @@
 									<div class="form-group">
 										<textarea class="form-control" row="7"  id="enterdiary" placeholder="Enter Daily Diary Note"></textarea>
 									</div>
-									
-									<input type="hidden" name="token" value="<?php echo Token::generate(); ?>">
+
 									<input type="submit" class="btn btn-success" value="Save">
 					
 								</form>

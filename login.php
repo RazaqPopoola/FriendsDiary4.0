@@ -1,6 +1,6 @@
 <?php 
 
-	include('config/setup.php'); 
+	include('config/init.php'); 
 	loggedInRedirect();
 	
 	if (empty($_POST) === false) {
@@ -33,7 +33,12 @@
 			} else{
 				
 				$_SESSION['memberID'] = $login;
-				header('Location: profile.php');
+				$data = loginRole($_SESSION['memberID']);
+				if ($data['type'] == 0) {
+					header('Location: profile.php');
+				} else if ($data['type'] == 1) {
+					header('Location: admin.php');
+				}
 				exit();	
 			}
 		}
@@ -54,7 +59,7 @@
 	</head>
 	<body>
 		<div id="wrap">
-			<?php include('template/planNavigation.php') ?>;
+			<?php include('template/planNav.php') ?>;
 			
 			<?php if(empty($errors) === false)
 				 echo outputErrors($errors);  ?>
@@ -82,7 +87,7 @@
 										</label>
 									</div>
 									
-									<input type="submit" class="btn btn-success" value="Login">
+									<input type="submit" class="btn btn-success" name="login" value="Login">
 								</form>
 							</div><!--- End panel body -->	
 						</div>	<!--- End panel-->

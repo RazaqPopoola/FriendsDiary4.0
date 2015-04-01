@@ -1,6 +1,6 @@
 <?php 
 	
-	include('config/setup.php');
+	include('config/init.php');
 	loggedInRedirect();
 	
 	if (empty($_POST) === false) {
@@ -62,7 +62,7 @@
 	</head>
 	<body>
 		<div id="wrap">
-			<?php include('template/planNavigation.php') ?>;
+			<?php include('template/planNav.php') ?>;
 			
 			<?php 
 				

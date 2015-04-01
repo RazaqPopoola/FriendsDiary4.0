@@ -1,5 +1,5 @@
 <?php
 
-mail('rasaqpopoola@yahoo.com', 'Hello', 'Hello, this is email test', 'From: razaqpopool@gmail.com');
+mail('razaqpopoola@outlook.com', 'Hello', 'Hello, this is email test', 'From: razaqpopool@gmail.com');
 
 ?>

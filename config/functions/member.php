@@ -5,12 +5,12 @@
 		return mysql_result(mysql_query("SELECT COUNT(`memberID`) FROM `members` WHERE `active` = 1"), 0);
 	}
 	
-	function activate($email, $email_code) {
+	function activate($email, $emailCode) {
 		$email 		=mysql_real_escape_string($email);
-		$email_code =mysql_real_escape_string($email_code);
+		$emaiLCode =mysql_real_escape_string($emailCode);
 	
-		if (mysql_result(mysql_query("SELECT COUNT(`memberID`) FROM `members` WHERE `email` = '$email' AND `email_code` = '$email_code' AND `active` = 0"), 0) == 1) {
-			//Query to update user active status.
+		if (mysql_result(mysql_query("SELECT COUNT(`memberID`) FROM `members` WHERE `email` = '$email' AND `emailCode` = '$emailCode' AND `active` = 0"), 0) == 1) {
+			//Update user active status.
 			mysql_query("UPDATE `members` SET `active` = 1 WHERE `email` = '$email'");
 			return true;
 		} else  {
@@ -22,10 +22,12 @@
 	function memberData($memberID){
 		
 		$data = array();
-		$memberID = (int)$memberID;
+		$memberID = (int) $memberID;
 		
 		$func_num_args = func_num_args();
 		$func_get_args = func_get_args();
+		
+		print_r($func_get_args);
 		
 		if($func_num_args > 1){
 			
@@ -41,7 +43,7 @@
 	
 	function loggedIn() {
 		
-		return (isset($_SESSION['memberID'])) ? true : false;
+			return (isset($_SESSION['memberID'])) ? true : false;
 	}
 	
 	function memberExists($username) {
@@ -74,8 +76,12 @@
 		
 		$username = sanitize($username);
 		$password = md5($password);
-		return (mysql_result(mysql_query("SELECT COUNT(`memberID`) FROM `members` WHERE `username` = '$username' AND `password` = '$password'"), 0) == 1) ? $user_id : false;
+		return (mysql_result(mysql_query("SELECT COUNT(`memberID`) FROM `members` WHERE `username` = '$username' AND `password` = '$password'"), 0) == 1) ? $memberID : false;
 	
+	}
+	
+	function loginRole($login){
+		return mysql_fetch_assoc(mysql_query("SELECT * FROM `members` WHERE `memberID` = $login"));
 	}
 	
 	function registerMember($registerData) {
@@ -87,7 +93,7 @@
 		$data = '\'' . implode('\', \'', $registerData) . '\'';
 
 		mysql_query("INSERT INTO `members` ($fields) VALUES ($data)");
-		email($registerData['email'], 'Activate your account', "Hello " . $registerData['first_name'] . ", \n\nYou need to activate your account, therefore use the link below:\n\nhttp://localhost/FsDProject/activate.php?email=" . $registerData['email'] . "&email_code=" . $registerData['email_code'] . "\n\n- FriendsDiary Application");
+		email($registerData['email'], 'Activate your account', "Hello " . $registerData['fName'] . ", \n\nYou need to activate your account, therefore use the link below:\n\nhttp://localhost/FsDProject/FriendsDiary4.0/activate.php?email=" . $registerData['email'] . "&emailCode=" . $registerData['emailCode'] . "\n\n- FriendsDiary Application");
 	}
 	
 	

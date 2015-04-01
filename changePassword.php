@@ -1,10 +1,9 @@
 <?php
+	 
+	 include('config/init.php'); 
+	 securePage();
 
-	include('config/setup.php'); 
-	//securePage();
-	
-	if(empty($_POST) === false) {
-		
+	if(empty($_POST) === false){
 		
 		$requiredFields = array('currentPassword', 'password', 'passwordAgain');
 		foreach($_POST as $key=>$value) {
@@ -14,21 +13,19 @@
 			}	
 		}
 		
-		
-		if (md5($_POST['currentPassword']) === $memberData['password']) {
+		if (md5($_POST['currentPassword']) === $memberData['password']){
 			
 			if (trim($_POST['password']) !== trim($_POST['passwordAgain'])) {
-				$errors[] = 'Your new passwords do not match';
-			}else if (strlen($_POST['password']) < 6) {
 				
-				$errors[] = 'Your password must be at least 6 characters';
+				$errors[] = 'Your new passwords do not match';
+			}else if (strlen($_POST['password']) < 8) {
+				
+				$errors[] = 'Your password must be at least 8 characters';
 			}
 		} else {
 			
 			$errors[] = 'Your current password is incorrect';
 		}
-		
-		echo $memberData['password'];
 
 	}
 	
@@ -45,7 +42,7 @@
 	</head>
 	<body>
 		<div id="wrap">
-			<?php include('template/navigation.php') ?>;
+			<?php include('template/planNav.php') ?>;
 				<?php 
 				
 					if(isset($_GET['success']) && empty($_GET['success'])){
@@ -60,6 +57,7 @@
 						}else if(empty($errors) === false){
 						
 							echo outputErrors($errors);
+							
 						}
 				?>
 			<div class="container">
