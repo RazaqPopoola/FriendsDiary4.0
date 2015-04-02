@@ -45,8 +45,6 @@
 	}
 		
 }
-	
-	print_r($errors);
 		
 
  ?>
@@ -78,7 +76,7 @@
 							'username' => $_POST['username'],
 							'password' => $_POST['password'],
 							'email' => $_POST['email'],
-							'emailCode' => md5($_POST['emailCode'] + date()),
+							'emailCode' => md5($_POST['emailCode'] + microtime),
 							'fName' => $_POST['fName'],
 							'lName' => $_POST['lName']
 						);

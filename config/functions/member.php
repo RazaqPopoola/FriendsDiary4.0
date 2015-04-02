@@ -6,6 +6,7 @@
 	}
 	
 	function activate($email, $emailCode) {
+		
 		$email 		=mysql_real_escape_string($email);
 		$emaiLCode =mysql_real_escape_string($emailCode);
 	
@@ -81,6 +82,7 @@
 	}
 	
 	function loginRole($login){
+		
 		return mysql_fetch_assoc(mysql_query("SELECT * FROM `members` WHERE `memberID` = $login"));
 	}
 	
@@ -96,6 +98,17 @@
 		email($registerData['email'], 'Activate your account', "Hello " . $registerData['fName'] . ", \n\nYou need to activate your account, therefore use the link below:\n\nhttp://localhost/FsDProject/FriendsDiary4.0/activate.php?email=" . $registerData['email'] . "&emailCode=" . $registerData['emailCode'] . "\n\n- FriendsDiary Application");
 	}
 	
+	function updateMember($memberID, $updateData) {
+		
+		$update = array();
+		array_walk($updateData, 'array_sanitize');
+	
+		foreach ($updateData as $field=>$data){
+			
+			$update[] = '`' . $field . '` = \'' . $data . '\'';
+		}
+		mysql_query("UPDATE `members` SET " . implode(', ', $update) . " WHERE `memberID` = $memberID");
+	}
 	
 	function changePassword($memberID, $password) {
 		

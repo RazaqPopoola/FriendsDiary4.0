@@ -1,6 +1,6 @@
 <?php
 	include('config/setup.php'); 
-	//loggedInRedirect();
+	loggedInRedirect();
 ?>
 
 <!DOCTYPE HTML>
@@ -26,7 +26,7 @@
 				} else if (isset($_GET['email'], $_GET['emailCode']) === true) {
 					
 					$email 		= trim($_GET['email']);
-					$email_code = trim($_GET['emailCode']);
+					$emailCode = trim($_GET['emailCode']);
 	
 					if (emailExists($email) === false) {
 					
@@ -49,8 +49,8 @@
 					}
 		
 				} else {
-					//header('Location: login.php');
-					//exit();
+					header('Location: index.php');
+					exit();
 				}
 				
 			?>				

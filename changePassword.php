@@ -6,7 +6,9 @@
 	if(empty($_POST) === false){
 		
 		$requiredFields = array('currentPassword', 'password', 'passwordAgain');
+		
 		foreach($_POST as $key=>$value) {
+			
 			if(empty($value) && in_array($key, $requiredFields) === true) {
 				$errors[] = 'Fields marked with an asterisk are required';
 				break 1;
@@ -26,7 +28,6 @@
 			
 			$errors[] = 'Your current password is incorrect';
 		}
-
 	}
 	
 	
