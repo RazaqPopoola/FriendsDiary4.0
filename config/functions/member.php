@@ -19,6 +19,32 @@
 		}
 	}
 	
+	function recover($mode, $email) {
+		
+		$mode 		 = sanitize($mode);
+		$email 		 = sanitize($email);
+	
+		$memberData	 = memberData(memberIDFromEmail($email), 'memberID', 'fName', 'username');
+	
+		if ($mode == 'username') {
+	
+			email($email, 'Your username', "Hello " . $memberData['fName'] . ", \n\nYour username is: " . $memberData['username'] . "\n\n-FriendsDiary Application");
+		} else if ($mode == 'password') {
+		
+			$generatedPassword = substr(md5(rand(999, 999999)), 0, 8);
+			changePassword($memberDataata['memberID'], $generatedPassword);
+	
+			updateMember($memberData['memberID'], array('passwordChange' => '1'));
+			email($email, 'Your password recovery', "Hello " . $memberData['first_name'] . ", \n\nYour new password is: " . $generatedPassword . "\n\n-FriendsDiary Application");
+		}
+	}
+	
+	function memberIDFromEmail($email){
+		
+		$email = sanitize($email);
+		return mysql_result(mysql_query("SELECT `memberID` FROM `members` WHERE `email` = '$email'"), 0, 'memberID');
+	}
+		
 	
 	function memberData($memberID){
 		
@@ -115,7 +141,7 @@
 		$memberID = (int) $memberID;
 		$password = md5($password);
 
-		mysql_query("UPDATE `members` SET `password` = '$password' WHERE `memberID` = $memberID");
+		mysql_query("UPDATE `members` SET `password` = '$password', `passwordChange` = 0 WHERE `memberID` = $memberID");
 	}
 
 	

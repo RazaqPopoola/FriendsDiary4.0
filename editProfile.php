@@ -26,8 +26,7 @@
 			}
 		}		
 	}
-	
-	print_r($errors);
+
 ?>
 
 <!DOCTYPE HTML>

@@ -1,7 +1,25 @@
 <?php 
-	
 	include('config/init.php'); 
+	/*
+	if(isset($_GET['username']) === true && empty($_GET['username']) === false){
+		
+		$username = $_GET['username'];
+		
+		if(memberExists($username) === true){
+			
+			$memberID = memberidFromUsername($username);
+			$profileData = memberData(memberID, 'fName', 'lName', 'email');
+		}else{
+			
+			echo 'Sorry, that Member do not exist!';
+		}
+	}else{
+		
+		header('Location: index.php');
+		exit();
+	}*/
 ?>
+
 
 
 <!DOCTYPE HTML>

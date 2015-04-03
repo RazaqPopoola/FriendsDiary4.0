@@ -41,7 +41,7 @@
 			?>
 					<h2>Oops...</h2>
 			<?php 
-						echo output_errors($errors);
+						echo outputErrors($errors);
 					} else {
 				
 						header('Location: activate.php?success');

@@ -64,7 +64,6 @@
 			<?php if(empty($errors) === false)
 				 echo outputErrors($errors);  ?>
 			<div class="container">
-				
 				<div class="row"> 
 					<div class="col-md-4 col-md-offset-4"> 
 						<div class="panel panel-success">
@@ -86,8 +85,14 @@
 										<input type="checkbox" name="remember" id="remember"> Remember Me
 										</label>
 									</div>
-									
-									<input type="submit" class="btn btn-success" name="login" value="Login">
+									<div class="form-group">
+										<input type="submit" class="btn btn-success" name="login" value="Login">
+									</div>
+									<div class"form-group">
+										<label for="forgotten">
+											Forgotten your <a href="recovery.php?mode=username">Username</a> or <a href="recovery.php?mode=password">Password</a>?
+										</label>
+									</div>
 								</form>
 							</div><!--- End panel body -->	
 						</div>	<!--- End panel-->

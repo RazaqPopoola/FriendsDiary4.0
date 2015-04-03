@@ -3,7 +3,7 @@
 	
 	function sanitize($data){
 		
-		return mysql_real_escape_string($data);
+		return htmlentities(strip_tags(mysql_real_escape_string($data)));
 	}
 	
 	function email($to, $subject, $body) {
@@ -19,6 +19,15 @@
 		}
 	}
 	
+	function secureAdmin(){
+		
+		global $memberData;
+		if($memberData['type'] === 0){
+			header('Location: index.php');
+			exit();
+		}
+	}
+	
 	function loggedInRedirect(){
 		
 		if(loggedIn() ===true){
@@ -29,7 +38,7 @@
 	
 	function arraySanitize($item){
 		
-		$item = mysql_real_escape_string($item);
+		$item = htmlentities(strip_tags(mysql_real_escape_string($item)));
 	}
 
 	function outputErrors($errors){

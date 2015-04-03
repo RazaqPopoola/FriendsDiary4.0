@@ -30,7 +30,6 @@
 		}
 	}
 	
-	
 ?>
 
 <!DOCTYPE HTML>
@@ -46,10 +45,17 @@
 			<?php include('template/planNav.php') ?>;
 				<?php 
 				
-					if(isset($_GET['success']) && empty($_GET['success'])){
+					if(isset($_GET['success']) === true && empty($_GET['success']) === true){
 					
-						echo 'Welcome to FriendsDiary your regissration is successful';
+						echo 'Your password has been successful changed!';
+						
 					}else{
+						
+						if(isset($_GET['force']) === true && empty($_GET['force']) === true){
+					?>	
+						<p> You must change your password to Login!</p>
+					<?php
+						}
 				
 						if(empty($_POST) === false && empty($errors) === true){
 						

@@ -116,8 +116,9 @@
 									<div class="form-group">
 										<input type="text" class="form-control" name="email"  placeholder="Enter Your Acitive Email">
 									</div>
+	
+										<input type="submit" class="btn btn-success" value="Register">
 									
-									<input type="submit" class="btn btn-success" value="Register">
 								</form>
 								<?php } ?>
 							</div><!--- End panel body -->	
