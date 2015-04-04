@@ -52,7 +52,7 @@
 								'fName'	 => $_POST['fName'],
 								'lName'	 => $_POST['lName'],
 								'email'  => $_POST['email'],
-								//'allow_email' 	=> ($_POST['allow_email'] == 'on') ? 1 : 0
+								'allowEmail' 	=> ($_POST['allowEmail'] == 'on') ? 1 : 0
 						);
 						
 						updateMember($sessionMemberID, $updateData);
@@ -80,6 +80,11 @@
 									</div>
 									<div class="form-group">
 										<input type="text" class="form-control" name="email"  value="<?php echo $memberData['email']; ?>" placeholder="Enter Your email">
+									</div>
+									<div class="checkbox">
+										<label for="receiveEmail">
+										<input type="checkbox" name="receiveEmail"  <?php if($memberData['allowEmail'] == 1){echo 'checked="checked"'; }?>> Receive Email?
+										</label>
 									</div>
 								
 										<input type="submit" class="btn btn-success" value="Update">

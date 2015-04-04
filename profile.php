@@ -18,6 +18,8 @@
 		header('Location: index.php');
 		exit();
 	}*/
+	
+	
 ?>
 
 
@@ -42,7 +44,11 @@
 							</div><!--- End panel heading -->
 							<div class="panel-body">
 								<div class="img-thumbnail">
-      	                 			<img src="..." alt="..."  width="171" height="180">
+									<?php
+      	                 				if(empty($memberData['profile']) === false){
+      	                 					echo '<img src="',  $memberData['profile'], 'width="171"', 'height="180"', '" alt="' , $memberData['fName'], Profile Image">';
+      	                 				}
+      	                 			?>
       	                 			 <div class="caption">
         								<h5>Profile Picture</h5>
         									<p>...</p>
@@ -70,7 +76,7 @@
 									</div>
 									
 									<div class="form-group">
-										<textarea class="form-control" row="7"  id="enterdiary" placeholder="Enter Daily Diary Note"></textarea>
+										<textarea class="form-control" rows="10"  id="enterdiary" placeholder="Enter Daily Diary Note"></textarea>
 									</div>
 
 									<input type="submit" class="btn btn-success" value="Save">

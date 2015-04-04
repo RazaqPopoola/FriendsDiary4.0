@@ -14,7 +14,7 @@
 	if(loggedIn() === true) {
 		
 		$sessionMemberID = $_SESSION['memberID'];
-		 $memberData = memberData($sessionMemberID, 'memberID', 'username', 'password', 'email', 'fName', 'lName', 'passwordChange', 'type');
+		 $memberData = memberData($sessionMemberID, 'memberID', 'username', 'password', 'email', 'fName', 'lName', 'passwordChange', 'type', 'allowEmail');
 	
 		if (memberActive($memberData['username']) === false){
 		

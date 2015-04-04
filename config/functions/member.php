@@ -3,6 +3,14 @@
 	function memberCount(){
 		
 		return mysql_result(mysql_query("SELECT COUNT(`memberID`) FROM `members` WHERE `active` = 1"), 0);
+		while(($row = mysql_fetch_assoc($query)) !== false){
+			email($row['email'], $subject, "Hello " . $row['fName'] . ",\n\n" . $body);
+		}
+	}
+	
+	function mailMember(){
+		
+		$query = mysql_query("SELECT `email`, `fName` FROM `members` WHERE `allowEmail` = 1");
 	}
 	
 	function activate($email, $emailCode) {
@@ -106,6 +114,7 @@
 		return (mysql_result(mysql_query("SELECT COUNT(`memberID`) FROM `members` WHERE `username` = '$username' AND `password` = '$password'"), 0) == 1) ? $memberID : false;
 	
 	}
+	
 	
 	function loginRole($login){
 		

@@ -13,7 +13,7 @@
 	</head>
 	<body>
 		<div id="wrap">
-			<?php include('template/planNav.php') ?>;
+			<?php include('template/adminNav.php') ?>;
 				<div class="container">
 					
 				</div>

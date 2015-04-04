@@ -22,7 +22,7 @@
 	function secureAdmin(){
 		
 		global $memberData;
-		if($memberData['type'] === 0){
+		if($memberData['type'] == 0){
 			header('Location: index.php');
 			exit();
 		}

@@ -24,6 +24,13 @@
 			/* Margin bottom by footer height */
 			margin-bottom: 60px;
 		}
+		
+	textarea{
+		
+		height: 200px;
+	}	
+		
+		
 	.footer {
 			position: absolute;
 			bottom: 0;
