@@ -20,6 +20,9 @@
 	}*/
 	
 	
+	
+	
+	
 ?>
 
 
@@ -43,17 +46,45 @@
 								<strong>Member Profile</strong>
 							</div><!--- End panel heading -->
 							<div class="panel-body">
-								<div class="img-thumbnail">
+								<div class="thumbnail">
 									<?php
+										if(isset($_FILES['profile']) === true){
+											if(empty($_FILES['profile']['name']) === true){
+												echo 'please choose a file!';
+											}else{
+												
+												$allowed = array('jpg', 'jpeg', 'gif', 'png');
+												
+												$file_name = $_FILES['profile']['name'];
+												$bits = (explode('.', $file_name));
+												$file_extn = strtolower(end($bits));
+												$file_temp = $_FILES['profile']['tmp_name'];
+												
+												if(in_array($file_extn, $allowed) === true){
+													
+													changeProfileImage($sessionMemberID, $file_temp, $file_extn);
+													
+													//header('Location: ' . $current_file);
+													//exit();
+												}else{
+													
+													echo 'Incorrect file type. Allowed file type: ';
+													echo implode(', ', $allowed);
+												}
+											}
+										}
+									
       	                 				if(empty($memberData['profile']) === false){
-      	                 					echo '<img src="',  $memberData['profile'], 'width="171"', 'height="180"', '" alt="' , $memberData['fName'], Profile Image">';
+											echo '<img src="', $memberData['profile'],  '" alt="', $memberData['fName'], '\'s Profile Image">';
       	                 				}
       	                 			?>
-      	                 			 <div class="caption">
+      	                 			
+      	                 			 <div>
         								<h5>Profile Picture</h5>
-        									<p>...</p>
-        									<p><input type="file" id="inputeFile" value="Choose Picture"> <br/>
-        										<a href="#" class="btn btn-default" role="button">Button</a></p>
+        									<form action="" method="post" enctype="multipart/form-data">
+        										<input type="file" name="profile" value="Choose Picture"> <br/>
+        										<input type="submit" class="btn btn-success" role="button">
+        									</form>
       								</div>
       	                 		</div>
 							</div><!--- End panel body -->	
@@ -69,10 +100,6 @@
 									
 									<div class="form-group">
 										<input type="text" class="form-control" name="title" id="title" placeholder="Enter Diary Title">
-									</div>
-									
-									<div class="form-group">
-										<input type="date" class="form-control" name="datec" id="datec">
 									</div>
 									
 									<div class="form-group">

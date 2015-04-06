@@ -7,7 +7,7 @@
 				FriendsDiary
 			</div>
 			<li><a href="memberConnect.php">Connect</a></li>
-			<li><a href="imageGallery">Gallery</a></li>
+			<li><a href="imgGallery.php">Gallery</a></li>
 			<li><a href="music.php">Music</a></li>
 			<li><a href="video.php">Video</a></li>
 		</ul>

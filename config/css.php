@@ -55,6 +55,16 @@
 		box-shadow: 2px 2px 5px #CCCCCC;
 	}
 	
+	.profile{
+		width: 180px;
+		height: 150px;
+		background-color: #bbbbbb;
+	}
+	
+	.profile img{
+		width: 100%;
+	}
+	
 	
 	.cf:before,
 	.cf:after{

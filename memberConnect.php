@@ -16,8 +16,8 @@
 		<div id="wrap">
 			<?php include('template/planNav.php') ?>;
 				<div class="container">
-					<h3>Ooops! You should Login Or Register to perform this task on FriendsDairy Please....</h3>	
-					<p>Thank you for using FriendsDiary......................</p>
+					h3>Ooops! You should Login Or Register to perform this task on FriendsDairy Please....</h3>	
+					<p>Thank you< for using FriendsDiary......................</p>
 				</div>
 		</div><!--- End wrap -->
 	</body>

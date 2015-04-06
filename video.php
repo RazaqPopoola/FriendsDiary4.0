@@ -8,7 +8,7 @@
 	</head>
 	<body>
 		<div id="wrap">
-			<?php include('template/planNav.php') ?>;
+			<?php include('template/contentNav.php') ?>;
 				<div class="container">
 					<h3>Ooops! You should Login Or Register to perform this task on FriendsDairy Please....</h3>	
 					<p>Thank you for using FriendsDiary......................</p>

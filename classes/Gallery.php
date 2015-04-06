@@ -1,5 +1,6 @@
 <?php
 class Gallery {
+	
 	public $path;
 	
 	public function __construct() {
@@ -21,9 +22,12 @@ class Gallery {
 		public function getImages($extensions = array('jpg', 'png')) {
 			$images = $this->getDirectory($this->path);
 			
-			foreach ($images as $index => $image) {
-				$extension = strtolower(end(explode('.', $image)));
+			foreach($images as $index => $image) {
+				//$extension = strtolower(end(explode('.', $image)));
 				
+				$bits = (explode('.', $image));
+				$extension = strtolower(end($bits));
+											
 				if (!in_array($extension, $extensions)) {
 					unset($images[$index]);
 				} else {

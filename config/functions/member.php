@@ -8,6 +8,13 @@
 		}
 	}
 	
+	function changeProfileImage($memberID, $file_temp, $file_extn){
+		
+		$file_path = 'images/profile/' . substr(md5(time()), 0, 10) . '.' . $file_extn;
+		move_uploaded_file($file_temp, $file_path);
+		mysql_query("UPDATE `members` SET `profile` = '" . $file_path .  "' WHERE  `memberID` = " . (int)$memberID);	
+	}
+	
 	function mailMember(){
 		
 		$query = mysql_query("SELECT `email`, `fName` FROM `members` WHERE `allowEmail` = 1");
