@@ -1,3 +1,15 @@
+<?php
+	
+	include('config/init.php'); 
+	
+	$gallery = new Gallery();
+	$gallery->setPath('images');
+	
+	$musics = $gallery->getMusics(array('mp3', 'wav'));
+
+?>
+
+
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -10,9 +22,10 @@
 		<div id="wrap">
 			<?php include('template/planNav.php') ?>;
 				<div class="container">
-					<h3>Ooops! You should Login Or Register to perform this task on FriendsDairy Please....</h3>	
-					<p>Thank you for using FriendsDiary......................</p>
-				</div>
+					
+					
+					
+				</div><!--- End container -->
 		</div><!--- End wrap -->
 	</body>
 	<footer>

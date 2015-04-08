@@ -19,11 +19,10 @@ class Gallery {
 			return scandir($path);
 		}
 		
-		public function getImages($extensions = array('jpg', 'png')) {
+		public function getImages($extensions = array('jpg', 'png', 'jpeg', 'gif')) {
 			$images = $this->getDirectory($this->path);
 			
 			foreach($images as $index => $image) {
-				//$extension = strtolower(end(explode('.', $image)));
 				
 				$bits = (explode('.', $image));
 				$extension = strtolower(end($bits));
@@ -40,4 +39,48 @@ class Gallery {
 		}
 			return (count($images)) ? $images : false;
 		}
+		
+		
+		public function getVideos($extensions = array('mp4', 'avi', 'wmv')) {
+			$videos = $this->getDirectory($this->path);
+			
+			foreach($videos as $index => $video) {
+				
+				$bits = (explode('.', $video));
+				$extension = strtolower(end($bits));
+											
+				if (!in_array($extension, $extensions)) {
+					unset($videos[$index]);
+				} else {
+					$videos[$index] = array(
+						'full' => $this->path . '/' . $video,
+						'thumb' => $this->path . '/thumbs/' . $video
+					);
+				}
+				
+		}
+			return (count($videos)) ? $videos : false;
+		}
+		
+		public function getMusics($extensions = array('mp3', 'wav')) {
+			$musics = $this->getDirectory($this->path);
+			
+			foreach($musics as $index => $music) {
+				
+				$bits = (explode('.', $music));
+				$extension = strtolower(end($bits));
+											
+				if (!in_array($extension, $extensions)) {
+					unset($musics[$index]);
+				} else {
+					$musics[$index] = array(
+						'full' => $this->path . '/' . $music,
+						'thumb' => $this->path . '/thumbs/' . $music
+					);
+				}
+				
+		}
+			return (count($musics)) ? $musics : false;
+		}
+		
 }

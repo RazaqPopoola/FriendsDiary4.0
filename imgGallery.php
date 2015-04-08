@@ -4,7 +4,7 @@
 	$gallery = new Gallery();
 	$gallery->setPath('images');
 	
-	$images = $gallery->getImages(array('jpg'));
+	$images = $gallery->getImages(array('jpg', 'png', 'jpeg', 'gif'));
 ?>
 
 
