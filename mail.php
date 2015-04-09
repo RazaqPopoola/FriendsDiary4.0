@@ -18,7 +18,7 @@
 					<?php 
 						if(isset($_GET['success']) === true && empty($_GET['success']) === true){
 						?>
-							<P>Email has been sent to all the members</P>
+							<p>Email has been sent to all the members</p>
 					<?php
 						}else{
 							
@@ -34,7 +34,7 @@
 									echo outputErrors($errors);
 								} else {
 									
-									//mailMember($_POST['subject'], $_POST['body']);
+									mailMember($_POST['subject'], $_POST['body']);
 									header('Location: mail.php?success');
 									exit();		
 								}

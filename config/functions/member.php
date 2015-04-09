@@ -3,22 +3,26 @@
 	function memberCount(){
 		
 		return mysql_result(mysql_query("SELECT COUNT(`memberID`) FROM `members` WHERE `active` = 1"), 0);
+		
+	}
+	
+	function mailMember($subject, $body){
+			
+		$query = mysql_query("SELECT `email`, `fName` FROM `members` WHERE `allowEmail` = 1 AND `type` = 0");
 		while(($row = mysql_fetch_assoc($query)) !== false){
-			email($row['email'], $subject, "Hello " . $row['fName'] . ",\n\n" . $body);
+			email($row['email'], $subject, "Hello " . $row['fName'] . ",\n\n" . $body . "\n\n- Friends Dairy Application");
 		}
 	}
+	
+	
 	
 	function changeProfileImage($memberID, $file_temp, $file_extn){
 		
 		$file_path = 'images/profile/' . substr(md5(time()), 0, 10) . '.' . $file_extn;
 		move_uploaded_file($file_temp, $file_path);
-		mysql_query("UPDATE `members` SET `profile` = '" . $file_path .  "' WHERE  `memberID` = " . (int)$memberID);	
+		mysql_query("UPDATE `members` SET `profile` = '" . mysql_real_escape_string($file_path) .  "' WHERE  `memberID` = " . (int)$memberID);	
 	}
 	
-	function mailMember(){
-		
-		$query = mysql_query("SELECT `email`, `fName` FROM `members` WHERE `allowEmail` = 1");
-	}
 	
 	function activate($email, $emailCode) {
 		
@@ -50,7 +54,7 @@
 			changePassword($memberDataata['memberID'], $generatedPassword);
 	
 			updateMember($memberData['memberID'], array('passwordChange' => '1'));
-			email($email, 'Your password recovery', "Hello " . $memberData['first_name'] . ", \n\nYour new password is: " . $generatedPassword . "\n\n-FriendsDiary Application");
+			email($email, 'Your password recovery', "Hello " . $memberData['fName'] . ", \n\nYour new password is: " . $generatedPassword . "\n\n-FriendsDiary Application");
 		}
 	}
 	
@@ -143,7 +147,7 @@
 	function updateMember($memberID, $updateData) {
 		
 		$update = array();
-		array_walk($updateData, 'array_sanitize');
+		array_walk($updateData, 'arraySanitize');
 	
 		foreach ($updateData as $field=>$data){
 			
@@ -151,6 +155,18 @@
 		}
 		mysql_query("UPDATE `members` SET " . implode(', ', $update) . " WHERE `memberID` = $memberID");
 	}
+	
+	function insertDiary($memberID, $insertData) {
+		
+		array_walk($insertData, 'arraySanitize');
+	
+		$fields = '`' . implode('`, `', array_keys($insertData)) . '`';
+		$data = '\'' . implode('\', \'', $insertData) . '\'';
+		
+		mysql_query("INSERT INTO `diarys` ($fields) VALUES ($data)");
+	}
+	
+	
 	
 	function changePassword($memberID, $password) {
 		

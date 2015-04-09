@@ -28,7 +28,7 @@
 								
 								<form action="media.php" method="post" enctype="multipart/form-data">
 									<div class="form-group">
-										<input type="file" class="form-control" name="file[]"  multiple>
+										<input type="file" class="form-control" name="files[]"  multiple>
 									</div>
 									<!---
 									<div class="form-group">

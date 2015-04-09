@@ -1,5 +1,8 @@
 <?php
 
+	//include 'useFunction/resize.php';
+	
+
 	if(!empty($_FILES['files']['name'][0])){
 		
 		$files = $_FILES['files'];
@@ -23,24 +26,26 @@
 				
 				if($file_error === 0){
 					
-					if($file_size <= 2097152){
+					if($file_size <= 27000000){
+					
+						if($file_ext == 'jpg' || 'png' || 'jpeg' || 'gif'){
+								
+								$file_name_new = uniqid('', true) . '.' . $file_ext;
+								$file_destination = 'uploads/images/' . $file_name_new;
 							
-						if($file_ext === 'jpg' || 'png' || 'gif' || 'jpeg'){
-							
-							$file_name = uniqid('', true) . '.' . $file_ext;
-							$file_destination = 'uploads/images/' . $file_name_new;
-						}else if($file_ext === 'mp4' || 'avi' || 'wmv'){
-							
-							$file_name = uniqid('', true) . '.' . $file_ext;
-							$file_destination = 'uplaods/videos/' . $file_name_new;
-						}else if($file_ext === 'mp3' || 'wav'){
+							}
+						 if($file_ext == 'mp4' || 'avi' || 'wmv'){
+								
+								$file_new_video = uniqid('', true) . '.' . $file_ext;
+								$file_destination = 'uploads/videos/' . $file_new_video;
+							}
+						if($file_ext == 'mp3' || 'wav'){
+								
+								$file_new_music = uniqid('', true) . '.' . $file_ext;
+								$file_destination = 'uploads/musics/' . $file_new_music;
+							}
 						
-							$file_name = uniqid('', true) . '.' . $file_ext;
-							$file_destination = 'uplaods/musics/' . $file_name_new;
-						}
-						
-						
-						if(move_uploaded_file($file_tmp, file_destination)){
+						if(move_uploaded_file($file_tmp, $file_destination)){
 							
 							$uploaded[$position] = $file_destination;
 						}else{

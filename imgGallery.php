@@ -1,6 +1,7 @@
 <?php
 	include('config/init.php'); 
 	
+	
 	$gallery = new Gallery();
 	$gallery->setPath('images');
 	
@@ -14,21 +15,20 @@
 		<title>Image Gallary</title>
 		<?php include('config/css.php'); ?>
 		<?php include('config/js.php'); ?>
+		<?php include('config/gcss.php'); ?>
 	</head>
 	<body>
 		<?php include('template/contentNav.php') ?>;
-		<div class="gcontainer">
-			<?php if ($images): ?>
+		<div class="gContainer">
+	
 			<div class="gallery cf">
-				<?php foreach($images as $image): ?>
+				<?php for($x = 1; $x <=12; $x++): ?>
 				<div class="gallery-item">
-					<a href="<?php echo $image['full']; ?>"><img src="<?php echo $image['thumb']; ?>"></a>
+					<img src="images/thumbs/79e907a763.jpg"
 				</div>
-				<?php endforeach; ?>
+				<?php endfor; ?>
 			</div>
-			<?php else: ?>
-				There are no images.
-			<?php endif; ?>
+			
 		</div>
 	</body>
 	<footer>
