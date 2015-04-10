@@ -17,8 +17,15 @@
 	}
 	
 	
-	//$mysqlString = "SELECT `data`, `title` FROM `diarys` WHERE `disryID` =  $diaryID"
-
+	$sql = "SELECT `date`, `title` FROM `diarys` WHERE `memberID` = $sessionMemberID";
+	$result = mysql_query($sql);
+	if(!$result){
+		$errors[] = 'Could not connect and show your data.';
+	}else if(!mysql_num_rows($result)){
+		
+		$errors[] = 'There is no diary record in the database.';
+	}
+	
 ?>
 
 
@@ -131,22 +138,29 @@
 							<div class="panel-heading">
 								<strong>List of Diary</strong>
 							</div><!--- End panel heading -->
+							<?php 
+								if (empty($errors) === false){
+											echo outputErrors($errors);
+									}
+								?>
 								<div class="table-responsive">
 									<table class="table">
 								        <thead>
 								          <tr>
 								            <th>Date</th>
-								            <th>Diary</th>
+								            <th>Diary Title</th>
 								          </tr>
 								        </thead>
 								        <tbody>
 								       	<?php 
-											for ($num = 0; $num <= 31; $num++) {
-									            echo '<tr>';
-									            echo '<td>'.$data1[$num]->find('a', 0).'</td>';
-									            echo '<td>'.$data[$num]->find('a', 0).'</td>';
-									            echo '</tr>';
-									        }
+								       		if(is_resource($result)){
+									       		while($row = mysql_fetch_array($result)){
+										            echo '<tr>';
+										            echo '<td>'.$row['date'].'</td>';
+										            echo '<td>'.$row['title'].'</td>';
+										            echo '</tr>';
+										        } 
+											}
 								          ?>
 								        </tbody>
 							      </table>

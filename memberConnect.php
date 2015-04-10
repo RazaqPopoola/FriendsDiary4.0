@@ -16,9 +16,24 @@
 		<div id="wrap">
 			<?php include('template/planNav.php') ?>;
 				<div class="container">
-					h3>Ooops! You should Login Or Register to perform this task on FriendsDairy Please....</h3>	
-					<p>Thank you< for using FriendsDiary......................</p>
-				</div>
+					<div class="row">
+						<div class="col-xs-9">
+							aASfa
+						</div><!--- End col 1 -->
+						<div class="col-xs-3">
+							<div>
+								<div class="col-xs-3">
+									list of friend
+								</div><!--- End col child 1-->
+							</div><!--- End row child 1-->
+							<div>
+								<div class="col-xs-3">
+									random pople on the application
+								</div><!--- End col child 2-->
+							</div><!--- End row child 2-->
+						</div><!--- End col 2-->
+					</div><!--- End row -->
+				</div><!--- End container -->
 		</div><!--- End wrap -->
 	</body>
 	<footer>
