@@ -17,22 +17,51 @@
 			<?php include('template/planNav.php') ?>;
 				<div class="container">
 					<div class="row">
-						<div class="col-xs-9">
-							aASfa
-						</div><!--- End col 1 -->
-						<div class="col-xs-3">
-							<div>
-								<div class="col-xs-3">
-									list of friend
-								</div><!--- End col child 1-->
-							</div><!--- End row child 1-->
-							<div>
-								<div class="col-xs-3">
-									random pople on the application
-								</div><!--- End col child 2-->
-							</div><!--- End row child 2-->
-						</div><!--- End col 2-->
-					</div><!--- End row -->
+					    <div class="col-md-8"> 
+					    	<div class="row">
+					            <div class="col-md-12">
+					            	<div class="panel panel-success">
+										<div class="panel-heading">
+											<strong>Search for Members</strong>
+										</div><!--- End panel heading -->
+										
+										
+									</div>	<!--- End panel-->
+					            </div>
+					        </div>
+					        <div class="row">
+					            <div class="col-md-6">Span 3</div>
+					            <div class="col-md-6">Span 3</div>
+					        </div>
+					    </div>
+					    <div class="col-md-4">
+					        <div class="row">
+					            <div class="col-md-12">
+					            	<div class="panel panel-success">
+										<div class="panel-heading">
+											<strong>List of Friends</strong>
+										</div><!--- End panel heading -->
+										
+										
+									</div>	<!--- End panel-->
+					            </div>
+					        </div>
+					        <div class="row">
+					            <div class="col-md-12">
+					            	<div class="panel panel-success">
+										<div class="panel-heading">
+											<strong>People on FsD</strong>
+										</div><!--- End panel heading -->
+										
+										
+									</div>	<!--- End panel-->
+					            </div>
+					        </div>
+					    </div>
+					</div>
+					<div class="row">
+					    <div class="col-md-8">Span 4</div>
+					</div>
 				</div><!--- End container -->
 		</div><!--- End wrap -->
 	</body>

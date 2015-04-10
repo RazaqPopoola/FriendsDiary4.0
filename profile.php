@@ -4,7 +4,7 @@
 	
 	if(empty($_POST) === false){
 		
-		$requiredFields = array('title', 'dairyNote');
+		$requiredFields = array('title', 'diaryDate', 'dairyNote');
 		foreach ($_POST as $key=>$value) {
 		
 			if(empty($value) && in_array($key, $requiredFields) === true){
@@ -17,7 +17,7 @@
 	}
 	
 	
-	$sql = "SELECT `date`, `title` FROM `diarys` WHERE `memberID` = $sessionMemberID";
+	$sql = "SELECT `diaryDate`, `title` FROM `diarys` WHERE `memberID` = $sessionMemberID AND YEAR(diaryDate) = YEAR(NOW()) AND MONTH(diaryDate)=MONTH(NOW())";
 	$result = mysql_query($sql);
 	if(!$result){
 		$errors[] = 'Could not connect and show your data.';
@@ -92,7 +92,7 @@
 							</div><!--- End panel body -->	
 						</div>	<!--- End panel-->
 					</div><!--- End Col-->
-					<div class="col-md-6">
+					<div class="col-md-5">
 						<div class="panel panel-success">
 							<div class="panel-heading">
 								<strong>Daily Diary</strong>
@@ -104,7 +104,7 @@
 											$insertData = array(
 													'memberID' 	 => $sessionMemberID,
 													'title'	 	=> $_POST['title'],
-													'date'		=>$_POST['date'],
+													'diaryDate'		=>$_POST['diaryDate'],
 													'diaryNote'	 => $_POST['diaryNote']
 											);
 											
@@ -120,7 +120,7 @@
 										<input type="text" class="form-control" name='title' placeholder="Enter Diary Title">
 									</div>
 									<div class="form-group">
-										<input type="date" class="form-control" name='date' >
+										<input type="date" class="form-control" name='diaryDate' >
 									</div>
 									
 									<div class="form-group">
@@ -133,7 +133,7 @@
 							</div><!--- End panel body -->		
 						</div>	<!--- End panel-->
 					</div><!--- End Col-->
-					<div class="col-md-3">
+					<div class="col-md-4">
 						<div class="panel panel-success">
 							<div class="panel-heading">
 								<strong>List of Diary</strong>
@@ -156,7 +156,7 @@
 								       		if(is_resource($result)){
 									       		while($row = mysql_fetch_array($result)){
 										            echo '<tr>';
-										            echo '<td>'.$row['date'].'</td>';
+										            echo '<td>'.$row['diaryDate'].'</td>';
 										            echo '<td>'.$row['title'].'</td>';
 										            echo '</tr>';
 										        } 
