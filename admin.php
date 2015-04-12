@@ -31,14 +31,13 @@
 					    </div><!--- End Col 1 -->
 					    <div class="col-md-5">
 					        <div class="row">
-					            <div class="col-md-12">
-					            	<div class="panel panel-success">
-										<div class="panel-heading">
-											<strong>Search for Members</strong>
-										</div><!--- End panel heading -->
-										
-										
-									</div>	<!--- End panel-->
+					            <div class="col-md-12">	
+									 <form class="navbar-form navbar-left" role="search">
+										 <div class="form-group">
+										   <input type="text" class="form-control" placeholder="Search">
+										 </div>
+										   <button type="submit" class="btn btn-success">Submit</button>
+									</form>
 					            </div><!--- End inner col-->
 					        </div><!--- End inner row-->
 					        <div class="row">

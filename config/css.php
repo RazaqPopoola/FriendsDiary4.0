@@ -102,7 +102,7 @@
 		width: 100%;
 	}
 	
-	
+	.input-mysize { width: 150px; }
 	/*
 	
 	.chat

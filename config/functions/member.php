@@ -73,7 +73,7 @@
 		$func_num_args = func_num_args();
 		$func_get_args = func_get_args();
 		
-		print_r($func_get_args);
+	
 		
 		if($func_num_args > 1){
 			

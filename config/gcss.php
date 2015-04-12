@@ -1,16 +1,16 @@
 <style>
 
-.cf:before,
+	.cf:before,
 	.cf:after{
 		content: " ";
-		dispaly: table;
+		display: table;
 	}
 	
 	.cf:after{
 		clear: both;
 	}	
 	
-	.gContainer{
+	.gcontainer{
 		max-width: 940px;
 		padding: 10px;
 		background: #f0f0f0;
@@ -18,7 +18,7 @@
 	}
 	
 	.gallery{
-		width: 100px;
+		width: 100%;
 	}
 	
 	.gallery-item{

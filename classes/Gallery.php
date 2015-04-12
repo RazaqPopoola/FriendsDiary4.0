@@ -4,7 +4,7 @@ class Gallery {
 	public $path;
 	
 	public function __construct() {
-		$this->path = __DIR__ . '\images';
+		$this->path = __DIR__ . '\uploads\images';
 	}
 	
 	public function setPath($path) {
@@ -12,14 +12,14 @@ class Gallery {
 		if(substr($path, -1) === '/') {
 			$path = substr($path, 0, -1);
 		}
-		$this->path = $path;
+		 $this->path = $path;
 	}
 		
 		private function getDirectory($path) {
 			return scandir($path);
 		}
 		
-		public function getImages($extensions = array('jpg', 'png', 'jpeg', 'gif')) {
+		 function getImages($extensions = array('jpg', 'png', 'jpeg', 'gif')) {
 			$images = $this->getDirectory($this->path);
 			
 			foreach($images as $index => $image) {
@@ -36,7 +36,7 @@ class Gallery {
 					);
 				}
 				
-		}
+			}
 			return (count($images)) ? $images : false;
 		}
 		

@@ -3,13 +3,14 @@
 	
 	
 	$gallery = new Gallery();
-	$gallery->setPath('images');
+	$gallery->setPath('uploads/images');
 	
 	$images = $gallery->getImages(array('jpg', 'png', 'jpeg', 'gif'));
+	
 ?>
 
 
-<!DOCTYPE >
+<!DOCTYPE html>
 <html>
 	<head>
 		<title>Image Gallary</title>
@@ -19,16 +20,18 @@
 	</head>
 	<body>
 		<?php include('template/contentNav.php') ?>;
-		<div class="gContainer">
-	
+		<div class="gcontainer">
+		<?php if($images): ?>
 			<div class="gallery cf">
-				<?php for($x = 1; $x <=12; $x++): ?>
-				<div class="gallery-item">
-					<img src="images/thumbs/79e907a763.jpg"
-				</div>
-				<?php endfor; ?>
+				<?php foreach($images as $image): ?>
+					<div class="gallery-item">
+						<a href="<?php echo $image['full']; ?>"><img src="<?php echo $image['thumb']; ?>"></a>
+					</div>
+				<?php endforeach; ?>
 			</div>
-			
+			<?php else: ?>
+				There are no images available.
+			<?php endif; ?>
 		</div>
 	</body>
 	<footer>

@@ -1,5 +1,5 @@
 <?php
-	include('config/setup.php'); 
+	include('config/init.php'); 
 	loggedInRedirect();
 ?>
 
@@ -13,7 +13,7 @@
 	</head>
 	<body>
 		<div id="wrap">
-			<?php include('template/planNavigation.php') ?>;
+			<?php include('template/planNav.php') ?>;
 				<div class="container">
 			<?php
 					
