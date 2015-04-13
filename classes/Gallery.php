@@ -54,7 +54,6 @@ class Gallery {
 				} else {
 					$videos[$index] = array(
 						'full' => $this->path . '/' . $video,
-						'thumb' => $this->path . '/thumbs/' . $video
 					);
 				}
 				
@@ -75,7 +74,6 @@ class Gallery {
 				} else {
 					$musics[$index] = array(
 						'full' => $this->path . '/' . $music,
-						'thumb' => $this->path . '/thumbs/' . $music
 					);
 				}
 				

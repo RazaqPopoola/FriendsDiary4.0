@@ -1,11 +1,12 @@
 <?php
 	
-	include('config/init.php'); 
+	include('config/init.php');
+	securePage();
 	
 	//$gallery = new Gallery();
 	//$gallery->setPath('uploads/videos');
 	
-	//$videos = $gallery->getVideos(array('mp4', 'avi', 'wmv'));
+	//$videos = $gallery->getVideos(array('mp4', 'flv', 'wmv', mov));
 
 ?>
 
@@ -18,19 +19,39 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">	
 			<?php include('config/css.php'); ?>
 			<?php include('config/js.php'); ?>
+			
+			
 			<script type="text/css">
-				div#videoPlayerBox{ width:550px; background:#000; margin:0px auto; }
-				div#videoControlBar{ background:#333; padding:10px;}
+				.videoPlayerBox{ 
+					width:550px; 
+					background:#000; 
+					margin: 0px auto; 
+					}
+					
+				.videoControlBar{ 
+					background: #333; 
+					padding: 10px;
+					}
 			</script>
 			<script>
-				function palyPause(btn, vid){
-					var vid = document.getElementById(vid);
-					if(vid.pause){
+				 var vid, playbtn;
+				 
+				 fuction initializePlayer(){
+				 	vid = document.getElementById("myVideo");
+				 	palybtn = document.getElementById("playpausebtn");
+				 	
+				 	playbtn.addEventListener("click", playpause, false);
+				 }
+				 window.onload = intializePlayer;
+				 
+				function palyPause(){
+				
+					if(vid.paused){
 						vid.play();
-						btn.innerHTML = "Pause";
+						playbtn.innerHTML = "Pause";
 					}else{
 						vid.pause();
-						btn.innerHTML = "Play";
+						playbtn.innerHTML = "Play";
 					}
 				}
 			</script>
@@ -49,20 +70,12 @@
 									FriendsDairy Video Player
 								</div>
 								<div class="panel-body">
-									<div id=videoPlayerBox>
-										<video id="myVideo" controls="controls" width="550" height="320">
-											<source src="uploads/videos/Wildlife.wmv">
+									<div align"center" class="embed-responsive embed-responsive-16by9">
+										<video autoplay controls class="embed-responive-item">
+											<source src="Wildlife.wmv">
 										</video>
-										<div id="videoControlBar">
-											<button id="playpausebtn" onclick="playPause(this, 'myVideo')">Pause</button>
-										</div>
-									</div>
-									<!-- 16:9 aspect ratio 
-									<div class="embed-responsive embed-responsive-16by9" hidden-xs>
-										<iframe class="embed-responsive-item" src="uploads/videos/Wildlife.wmv" allowfullscreen></iframe>
-									</div>
-									<p Class="visible-xs hidden-sm">The video has been remove on an extar small size please mov to bigger screen to view</p>
-									-->
+ 									</div
+							
 								</div><!--- End panel body-->
 							</div><!--- End panel -->
 						</div><!--- End col -->

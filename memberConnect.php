@@ -14,7 +14,7 @@
 	</head>
 	<body>
 		<div id="wrap">
-			<?php include('template/planNav.php') ?>;
+			<?php include('template/contentNav.php') ?>;
 				<div class="container">
 					<div class="row">
 					    <div class="col-md-7"> 

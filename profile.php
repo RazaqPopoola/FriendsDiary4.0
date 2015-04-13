@@ -1,5 +1,7 @@
 <?php 
 	include_once('config/init.php'); 
+	securePage();
+	
 	
 	
 	if(empty($_POST) === false){

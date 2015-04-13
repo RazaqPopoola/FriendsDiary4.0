@@ -1,6 +1,6 @@
 <?php
 	include('config/init.php'); 
-	
+	securePage();
 	
 	$gallery = new Gallery();
 	$gallery->setPath('uploads/images');
