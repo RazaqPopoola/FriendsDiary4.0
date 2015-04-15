@@ -31,7 +31,7 @@
 						<div class="col-md-8">
 							<div class="panel panel-success">
 								<div class="panel-heading">
-									FriendsDairy Video Player
+									FriendsDairy Audio Player
 								</div>
 								<div class="panel-body">
 					

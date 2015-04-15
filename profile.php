@@ -53,7 +53,7 @@
 							<div class="panel-body">
 								<div class="thumbnail">
 									<?php
-										if(isset($_FILES['profile']) === true && isset($_POST['upload'])){
+										if(isset($_FILES['profile']) === true && isset($_POST['uploadP'])){
 											if(empty($_FILES['profile']['name']) === true){
 												echo 'please choose a file!';
 											}else{
@@ -87,7 +87,7 @@
         								<h5>Profile Picture</h5>
         									<form action="" method="post" enctype="multipart/form-data">
         										<input type="file" name="profile" value="Choose Picture"> <br/>
-        										<input type="submit" class="btn btn-success" role="button" name="upload" value"Upload">
+        										<input type="submit" class="btn btn-success" role="button" name="uploadP" value"Upload">
         									</form>
       								</div>
       	                 		</div>
@@ -101,7 +101,7 @@
 							</div><!--- End panel heading -->
 							<div class="panel-body">
 								<?php
-									if(empty($_POST) === false && empty($errors) === true){
+									if(isset($_POST['saveDiary']) && empty($errors) === true){
 										
 											$insertData = array(
 													'memberID' 	 => $sessionMemberID,

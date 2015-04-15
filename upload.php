@@ -1,6 +1,8 @@
 <?php 
 
-
+	include_once('config/init.php'); 
+	securePage();
+	
 ?>
 
 <!DOCTYPE HTML>
@@ -22,21 +24,16 @@
 					<div class="col-md-4 col-md-offset-4"> 
 						<div class="panel panel-success">
 							<div class="panel-heading">
-								<strong>Media Upload</strong>
+								<strong>Image Upload</strong>
 							</div><!--- End panel heading -->
 							<div class="panel-body">	
 								
-								<form action="media.php" method="post" enctype="multipart/form-data">
+								<form action="imgUpload.php" method="post" enctype="multipart/form-data">
 									<div class="form-group">
 										<input type="file" class="form-control" name="files[]"  multiple>
 									</div>
-									<!---
 									<div class="form-group">
-										<input type="password" class="form-control" name="password" placeholder="Enter Your Password">
-									</div> -->
-									
-									<div class="form-group">
-										<input type="submit" class="btn btn-success" name="upload" value="Upload">
+										<input type="submit" class="btn btn-success" name="uploadimg" value="Upload">
 									</div>
 								</form>
 							</div><!--- End panel body -->	

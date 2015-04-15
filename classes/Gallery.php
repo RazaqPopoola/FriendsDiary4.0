@@ -5,6 +5,8 @@ class Gallery {
 	
 	public function __construct() {
 		$this->path = __DIR__ . '\uploads\images';
+		$this->path = __DIR__ . '\uploads\musics';
+		$this->path = __DIR__ . '\uploads\videos';
 	}
 	
 	public function setPath($path) {

@@ -24,24 +24,34 @@
 										<div class="panel-heading">
 											<strong>Search for Members</strong>
 										</div><!--- End panel heading -->
-										
+										<div class="panel-body"
 										<form class="navbar-form navbar-left" role="search">
-										  <div class="form-group">
+										  <div class="input-group">
 										    <input type="text" class="form-control" placeholder="Search">
+										    <span class="input-group-btn">
+										    <button type="submit" class="btn btn-default">Submit</button>
+										    </span>
 										  </div>
-										  <button type="submit" class="btn btn-default">Submit</button>
+										  
 										</form>
+										</div>
 									</div>	<!--- End panel-->
 					            </div>
 					        </div>
 					        <div class="row">
-					            <div class="col-md-5">Span 3
-					            	
+					            <div class="col-md-5">
+					            	<div class="thumbnail">
+					            		<?php
+					            		if(empty($memberData['profile']) === false){
+											echo '<img src="', $memberData['profile'],  '" alt="', $memberData['fName'], '\'s Profile Image">';
+      	                 				}
+										?>
+					            	</div>
 					            </div>
 					            <div class="col-md-7">
 					            	<div class="panel panel-success">
 					            		<div class="papanel-body">
-					            				<textarea name="outpouring" rows="5" class="form-control">Mind Outpouring?</textarea>
+					            				<textarea name="outpouring" rows="16" class="form-control">Mind Outpouring?</textarea>
 					            		</div>
 					            	</div>
 					            </div>

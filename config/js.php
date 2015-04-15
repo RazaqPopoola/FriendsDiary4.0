@@ -46,8 +46,13 @@
 		    $(".button-skip-backward").blur();
 		    audioElement.currentTime -= 5;
 		  });
-					
-			
-			
+		</script>
+		
+		<script>
+			$(documnt).ready(function(){
+				
+			});
 			
 		</script>
+
+
