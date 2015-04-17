@@ -23,7 +23,7 @@
 				
 				if($file_error === 0){
 					
-					if($file_size <= 2097152){
+					if($file_size <=  2097152){
 					
 						if($file_ext == 'jpg' || 'png' || 'jpeg' || 'gif' ){
 								
@@ -36,6 +36,8 @@
 						if(move_uploaded_file($file_tmp, $file_destination)){
 							$uploaded[$position] = $file_destination;
 							copy($file_destination, $file_destination1);
+							
+							header('Location: imgGallery.php');
 						
 						}else{
 							
@@ -56,6 +58,13 @@
 		}
 	}
 	
-
+	if(!empty($uploaded)){
+		print_r($uploaded);
+	}
+	
+	if(!empty($failed)){
+		print_r($failed);
+		
+	}
 
 ?>

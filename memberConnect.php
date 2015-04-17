@@ -1,6 +1,6 @@
 <?php
-	include('config/init.php')
-
+	include('config/init.php');
+										
 ?>
 
 
@@ -24,16 +24,16 @@
 										<div class="panel-heading">
 											<strong>Search for Members</strong>
 										</div><!--- End panel heading -->
-										<div class="panel-body"
-										<form class="navbar-form navbar-left" role="search">
+										<div class="panel-body">
+										<form action="memberConnect.php" method="post">
 										  <div class="input-group">
-										    <input type="text" class="form-control" placeholder="Search">
+										    <input type="text" name="search" class="form-control" placeholder="Search for Members" onkeydown="searchq();">
 										    <span class="input-group-btn">
-										    <button type="submit" class="btn btn-default">Submit</button>
+										    <button type="submit" class="btn btn-success">Submit</button>
 										    </span>
 										  </div>
-										  
 										</form>
+										<div id="output"></div>
 										</div>
 									</div>	<!--- End panel-->
 					            </div>

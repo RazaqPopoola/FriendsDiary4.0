@@ -10,6 +10,24 @@
 		
 		<!-- Latest compiled and minified JavaScript -->
 		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+
+		<script>
+			function searchq(){
+				var searchTxt = $("input[name='search']").val();
+				
+				$.post("search.php", {searchVal: searchTxt}, function(output){
+					
+					$("#output").html(output);
+				});
+				
+			}
+		
+		</script>
+
+
 
 		<script>
 			
@@ -48,11 +66,6 @@
 		  });
 		</script>
 		
-		<script>
-			$(documnt).ready(function(){
-				
-			});
-			
-		</script>
+		
 
 

@@ -16,31 +16,6 @@
   						<div class="col-sm-8">
     						<div class="row">
      				    		<div class="col-sm-6">
-     				    			
-     				    			<div class="panel panel-success">
-										<div class="panel-heading">
-											<strong>Login</strong>
-										</div><!--- End panel heading -->
-										<div class="panel-body">	
-											
-											<form action="" method="post">
-												<div class="form-group">
-													<input type="text" class="form-control" name="username" autocomplete="off" placeholder="Enter Your Username">
-												</div>
-												<div class="form-group">
-													<input type="password" class="form-control" name="password" placeholder="Enter Your Password">
-												</div>
-												
-												<div class="checkbox">
-													<label for="remember">
-													<input type="checkbox" name="remember" id="remember"> Remember Me
-													</label>
-												</div>
-												
-												<input type="submit" class="btn btn-success" value="Login">
-											</form>
-										</div><!--- End panel body -->	
-									</div>	<!--- End panel-->
 									<!--- End of loginand start of register-->
 									<div class="panel panel-success">
 										<div class="panel-heading">
@@ -71,6 +46,9 @@
 											</form>
 										</div><!--- End panel body -->	
 									</div>	<!--- End panel-->
+									<a href="login.php">
+										<button type="button" class="btn btn-success btn-block">Login</button>
+									</a>
      				    		</div> <!--- End col for login and register-->
       							<div class="col-sm-6">
       								

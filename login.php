@@ -96,6 +96,9 @@
 								</form>
 							</div><!--- End panel body -->	
 						</div>	<!--- End panel-->
+						<a href="register.php">
+							<button type="button" class="btn btn-success btn-block">Register</button>
+						</a>
 					</div><!--- End Col-->
 				</div><!--- End Row -->
 			</div><!--- End container -->

@@ -3,6 +3,14 @@
 	include('config/init.php');
 	securePage();
 	
+	
+	
+	$query = mysql_query("SELECT 'id', 'name', 'url' FROM videostb");
+	While($run = mysql_fetch_array($query));
+	$videoID = $run['id'];
+	$videoName = $run['name'];
+	$videoUrl = $run['url'];
+	
 ?>
 
 
@@ -13,6 +21,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">	
 			<?php include('config/css.php'); ?>
 			<?php include('config/js.php'); ?>
+			
+			<link href="//vjs.zencdn.net/4.12/video-js.css" rel="stylesheet">
+			<script src="//vjs.zencdn.net/4.12/video.js"></script>
 			
 			<!---
 			<script type="text/css">
@@ -62,38 +73,43 @@
 							</div><!--- End panel heading -->
 							<div class="panel-body">
 								
-								<form method="post" enctype="multipart/form-data">
+								<form method='post' enctype='multipart/form-data'>
 									<?php
+									
 									if(isset($_FILES['video'])){
-										
+											
 										$name = $_FILES['video']['name'];
 										$type = explode('.', $name);
 										$type = strtolower(end($type));
-										
-										echo print_r($type);
 										$size = $_FILES['video']['size'];
 										$randomName = rand();
-										$temp = $_FILES['video']['tmp_name'];
-										
-										if($type == 'mp4' || $type == 'MP4' || $type == 'WMV' ||  $type == 'wmv'){
-										 	$errors[] = "Video Format not Supported";
+										$tmp = $_FILES['video']['tmp_name'];
+											
+													
+										if($type != 'mp4' || $type != 'wmv' || $type != 'flv' || $type != 'avi' || $type != 'mov'){
+												
+												$errors[] = "Video format is not supported !";
 										}else{
+												
+												$destination = 'uploads/videos/' . $randomName . '.' . $type;
+												move_uploaded_file($tmp, $destination);
+												
+												mysql_query("INSERT INTO videostb VALUES('', '$name', 'uploads/videos/$randomName.$type')");
+												echo  'Successfully Uploaded! ';
+	
 											
-											move_uploaded_file($temp, 'uploads/videos/' .$randomName.'.'.$type);
-											
-											mysql_query("INSERT INTO videostb VALUES('', '$name',  'uploads/videos/$randomName.$type')");
-											$errors[] = "Successfully Uploaded! ";
-									
 										} 
-										 echo outputErrors($errors);;
+											 echo outputErrors($errors);
 									}
+									
+									
 								?>
 									
 									<div class="form-group">
 										<input type="file" class="form-control" name="video">
 									</div>
 									<div class="form-group">
-										<input type="submit" class="btn btn-success" value="Upload">
+										<input type="submit" class="btn btn-success" name="uploadV" value="Upload">
 									</div>
 								</form>
 							</div><!--- End panel body -->	
@@ -105,14 +121,17 @@
 									FriendsDairy Video Player
 								</div>
 								<div class="panel-body">
-									
-									<!---
-									<div align"center" class="embed-responsive embed-responsive-16by9">
-										<video autoplay controls class="embed-responive-item">
-											<source src="Wildlife.wmv">
+									<div >
+										<video id="example_video_1" class="video-js vjs-default-skin"
+										  controls preload="auto" width="540" height="364"
+										  poster="http://video-js.zencoder.com/oceans-clip.png"
+										  data-setup='{"example_option":true}'>
+										 <source src="http://video-js.zencoder.com/oceans-clip.mp4" type='video/mp4' />
+										 <source src="http://video-js.zencoder.com/oceans-clip.webm" type='video/webm' />
+										 <source src="http://video-js.zencoder.com/oceans-clip.ogv" type='video/ogg' />
+										 <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
 										</video>
- 									</div -->
-							
+									</div>
 								</div><!--- End panel body-->
 							</div><!--- End panel -->
 						</div><!--- End col -->
@@ -152,7 +171,7 @@
 		</div><!--- End wrap -->
 	</body>
 	<footer>
-		<?php include('template/footer.php')?>
+		<?php include('template/footer.php'); ?>
 	</footer>
 </html>
 
