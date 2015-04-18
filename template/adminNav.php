@@ -6,6 +6,7 @@
 				FriendsDiary
 			</div>
 			<li><a href="memberConnect.php">Admin DashBoard</a></li>
+			<li><a href="mail.php">All-Member Mail</a></li>
 		</ul>
 		
 		<div class="pull-right">

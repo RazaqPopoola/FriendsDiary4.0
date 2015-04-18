@@ -32,12 +32,21 @@
 					    <div class="col-md-5">
 					        <div class="row">
 					            <div class="col-md-12">	
-									 <form class="navbar-form navbar-left" role="search">
-										 <div class="form-group">
-										   <input type="text" class="form-control" placeholder="Search">
-										 </div>
-										   <button type="submit" class="btn btn-success">Submit</button>
-									</form>
+					            	<div class="panel panel-success">
+					            		<div class="panel-heading">
+					            			<strong>Search Member</strong>
+					            		</div>
+					            		<div class="panel-body"> 
+										 <form class="navbar-form navbar-left" role="search">
+											 <div class="input-group">
+											   <input type="text" class="form-control" placeholder="Search">
+											    <span class="input-group-btn">
+											   		<button type="submit" class="btn btn-success">Submit</button>
+											   </span>
+											 </div>
+										</form>
+										</div><!--- End panel body-->
+									</div><!--- End panel-->
 					            </div><!--- End inner col-->
 					        </div><!--- End inner row-->
 					        <div class="row">

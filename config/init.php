@@ -3,10 +3,10 @@
 	session_start();
 	//error_reporting(0);
 	
-	include_once 'connectdb/dbConnect.php';
-	require 'functions/security.php';
-	require 'functions/member.php';
-	require 'classes/Gallery.php';
+	require('connectdb/dbConnect.php');
+	require('functions/security.php');
+	require('functions/member.php');
+	require('classes/Gallery.php');
 
 	$currentFile = explode('/', $_SERVER['SCRIPT_NAME']);
 	$currentFile = end($currentFile);
