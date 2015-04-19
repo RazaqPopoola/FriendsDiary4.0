@@ -1,8 +1,8 @@
 <?php
 
-	function get_message(){
+	function getMessage(){
 		
-		$query = "SELECT `sender`, `message` FROM `chats`";
+		$query = "SELECT `sender`, `message` FROM `chats` ORDER BY `msgID` DESC";
 		$un = mysql_query($query);
 		
 		$messages = array();
@@ -14,7 +14,7 @@
 		return $messages;
 	}
 
-	function send_msg($sender, $message){
+	function sendMessage($sender, $message){
 		
 		if(!empty($sender) && !empty($message)){
 			
