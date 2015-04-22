@@ -1,7 +1,7 @@
 <?php 
 	include('config/init.php');
-	//securePage();
-	//secureAdmin();
+	securePage();
+	secureAdmin();
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -37,9 +37,9 @@
 					            			<strong>Search Member</strong>
 					            		</div>
 					            		<div class="panel-body"> 
-										 <form class="navbar-form navbar-left" role="search">
+										 <form action="admin.php" method="post">
 											 <div class="input-group">
-											   <input type="text" class="form-control" placeholder="Search">
+											   <input type="text" name="search" class="form-control" autocomplete="off"  placeholder="Search for Members" onkeydown="searchq();">
 											    <span class="input-group-btn">
 											   		<button type="submit" class="btn btn-success">Submit</button>
 											   </span>

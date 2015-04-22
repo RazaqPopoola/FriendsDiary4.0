@@ -95,45 +95,68 @@
 						</div>	<!--- End panel-->
 					</div><!--- End Col-->
 					<div class="col-md-5">
-						<div class="panel panel-success">
-							<div class="panel-heading">
-								<strong>Daily Diary</strong>
-							</div><!--- End panel heading -->
-							<div class="panel-body">
-								<?php
-									if(isset($_POST['saveDiary']) && empty($errors) === true){
-										
-											$insertData = array(
-													'memberID' 	 => $sessionMemberID,
-													'title'	 	=> $_POST['title'],
-													'diaryDate'		=>$_POST['diaryDate'],
-													'diaryNote'	 => $_POST['diaryNote']
-											);
+						<div class="row">
+					            <div class="col-md-12">	
+					            	<div class="panel panel-success">
+					            		<div class="panel-heading">
+					            			<strong>Search for Diary</strong>
+					            		</div>
+					            		<div class="panel-body"> 
+										 <form action="" method="post">
+											 <div class="input-group">
+											   <input type="text" name="searchd" class="form-control" autocomplete="off" placeholder="Search for Diary" onkeydown="searchq();">
+											    <span class="input-group-btn">
+											   		<button type="submit" class="btn btn-success">Submit</button>
+											   </span>
+											 </div>
+										</form>
+										</div><!--- End panel body-->
+									</div><!--- End panel-->
+					            </div><!--- End inner col-->
+					        </div><!--- End inner row-->
+					        <div class="row">
+					            <div class="col-md-12">	
+								<div class="panel panel-success">
+									<div class="panel-heading">
+										<strong>Daily Diary</strong>
+									</div><!--- End panel heading -->
+									<div class="panel-body">
+										<?php
+											if(isset($_POST['saveDiary']) && empty($errors) === true){
+												
+													$insertData = array(
+															'memberID' 	 => $sessionMemberID,
+															'title'	 	=> $_POST['title'],
+															'diaryDate'		=>$_POST['diaryDate'],
+															'diaryNote'	 => $_POST['diaryNote']
+													);
+													
+													insertDiary($sessionMemberID, $insertData);
+													
+												}else if (empty($errors) === false){
+													echo outputErrors($errors);
+												}
+										?>
+										<form action="" method="post">
 											
-											insertDiary($sessionMemberID, $insertData);
+											<div class="form-group">
+												<input type="text" class="form-control" name='title' placeholder="Enter Diary Title">
+											</div>
+											<div class="form-group">
+												<input type="date" class="form-control" name='diaryDate' >
+											</div>
 											
-										}else if (empty($errors) === false){
-											echo outputErrors($errors);
-										}
-								?>
-								<form action="" method="post">
-									
-									<div class="form-group">
-										<input type="text" class="form-control" name='title' placeholder="Enter Diary Title">
-									</div>
-									<div class="form-group">
-										<input type="date" class="form-control" name='diaryDate' >
-									</div>
-									
-									<div class="form-group">
-										<textarea class="form-control" rows="10"  name="diaryNote" placeholder="Enter Daily Diary Note"></textarea>
-									</div>
-
-									<input type="submit" class="btn btn-success" name="saveDiary" value="save">
-					
-								</form>
-							</div><!--- End panel body -->		
-						</div>	<!--- End panel-->
+											<div class="form-group">
+												<textarea class="form-control" rows="10"  name="diaryNote" placeholder="Enter Daily Diary Note"></textarea>
+											</div>
+		
+											<input type="submit" class="btn btn-success" name="saveDiary" value="save">
+							
+										</form>
+									</div><!--- End panel body -->		
+								</div>	<!--- End panel-->
+						 	</div><!--- End inner col-->
+					    </div><!--- End inner row-->
 					</div><!--- End Col-->
 					<div class="col-md-4">
 						<div class="panel panel-success">

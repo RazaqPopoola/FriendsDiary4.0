@@ -1,6 +1,6 @@
 <?php
 	include('config/init.php');
-										
+	securePage();								
 ?>
 
 
@@ -27,7 +27,7 @@
 										<div class="panel-body">
 										<form action="memberConnect.php" method="post">
 										  <div class="input-group">
-										    <input type="text" name="search" class="form-control" placeholder="Search for Members" onkeydown="searchq();">
+										    <input type="text" name="search" class="form-control"  autocomplete="off" placeholder="Search for Members" onkeydown="searchq();">
 										    <span class="input-group-btn">
 										    <button type="submit" class="btn btn-success">Submit</button>
 										    </span>

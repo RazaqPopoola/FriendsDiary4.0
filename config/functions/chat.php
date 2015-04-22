@@ -3,7 +3,7 @@
 	function getMessage(){
 		
 		$query = "SELECT `sender`, `message` FROM `chats` ORDER BY `msgID` DESC";
-		$un = mysql_query($query);
+		$run = mysql_query($query);
 		
 		$messages = array();
 		

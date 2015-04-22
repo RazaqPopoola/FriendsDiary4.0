@@ -6,6 +6,7 @@
 			<div class="navbar-brand">
 				FriendsDiary
 			</div>
+			<li><a href="profile.php">Home</a></li>
 			<li><a href="memberConnect.php">Connect</a></li>
 			<li><a href="imgGallery.php">Gallery</a></li>
 			<li><a href="music.php">Music</a></li>

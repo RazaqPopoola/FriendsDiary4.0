@@ -5,7 +5,7 @@
 			<div class="navbar-brand">
 				FriendsDiary
 			</div>
-			<li><a href="memberConnect.php">Admin DashBoard</a></li>
+			<li><a href="admin.php">Admin DashBoard</a></li>
 			<li><a href="mail.php">All-Member Mail</a></li>
 		</ul>
 		
