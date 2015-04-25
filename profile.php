@@ -104,7 +104,7 @@
 					            		<div class="panel-body"> 
 										 <form action="" method="post">
 											 <div class="input-group">
-											   <input type="text" name="searchd" class="form-control" autocomplete="off" placeholder="Search for Diary" onkeydown="searchq();">
+											   <input type="text" name="searchd" class="form-control" autocomplete="off" placeholder="Search for Diary" onkeydown=";">
 											    <span class="input-group-btn">
 											   		<button type="submit" class="btn btn-success">Submit</button>
 											   </span>

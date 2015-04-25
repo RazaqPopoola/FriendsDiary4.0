@@ -30,9 +30,8 @@
 	
 	function loggedInRedirect(){
 		
-		if(loggedIn() ===true){
+		if(loggedIn() === true){
 			header('Location: profile.php');
-			exit();
 		}
 	}
 	

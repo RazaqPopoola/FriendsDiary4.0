@@ -5,12 +5,13 @@
 	
 	
 	
-	$query = mysql_query("SELECT 'id', 'name', 'url' FROM videostb");
-	While($run = mysql_fetch_array($query));
-	$videoID = $run['id'];
-	$videoName = $run['name'];
-	$videoUrl = $run['url'];
-	
+	$query = mysql_query("SELECT `videoID`, `name`, `videoURL` FROM videostb");
+	while($run = mysql_fetch_array($query)){
+		
+		$videoID = $run['videoID'];
+		$videoName = $run['name'];
+		$videoURL = $run['videoURL'];
+	}
 ?>
 
 
@@ -25,41 +26,7 @@
 			<link href="//vjs.zencdn.net/4.12/video-js.css" rel="stylesheet">
 			<script src="//vjs.zencdn.net/4.12/video.js"></script>
 			
-			<!---
-			<script type="text/css">
-				.videoPlayerBox{ 
-					width:550px; 
-					background:#000; 
-					margin: 0px auto; 
-					}
-					
-				.videoControlBar{ 
-					background: #333; 
-					padding: 10px;
-					}
-			</script>
-			<script>
-				 var vid, playbtn;
-				 
-				 fuction initializePlayer(){
-				 	vid = document.getElementById("myVideo");
-				 	palybtn = document.getElementById("playpausebtn");
-				 	
-				 	playbtn.addEventListener("click", playpause, false);
-				 }
-				 window.onload = intializePlayer;
-				 
-				function palyPause(){
-				
-					if(vid.paused){
-						vid.play();
-						playbtn.innerHTML = "Pause";
-					}else{
-						vid.pause();
-						playbtn.innerHTML = "Play";
-					}
-				}
-			</script> -->
+
 	</head>
 	<body>
 		<div id="wrap">
@@ -86,15 +53,14 @@
 										$tmp = $_FILES['video']['tmp_name'];
 											
 													
-										if($type != 'mp4' || $type != 'wmv' || $type != 'flv' || $type != 'avi' || $type != 'mov'){
+										if($type != 'mp4' && $type != 'wmv' && $type != 'flv' && $type != 'avi' && $type != 'mov'){
 												
 												$errors[] = "Video format is not supported !";
 										}else{
 												
-												$destination = 'uploads/videos/' . $randomName . '.' . $type;
-												move_uploaded_file($tmp, $destination);
+												move_uploaded_file($tmp, 'uploads/videos/'.$randomName.'.'.$type);
 												
-												mysql_query("INSERT INTO videostb VALUES('', '$name', 'uploads/videos/$randomName.$type')");
+												mysql_query("INSERT INTO `videostb` VALUES('', '$name', '$randomName.$type')");
 												echo  'Successfully Uploaded! ';
 	
 											
@@ -122,13 +88,16 @@
 								</div>
 								<div class="panel-body">
 									<div >
+										<?php 
+											
+											$video = $_GET['video'];
+										
+										 ?>
 										<video id="example_video_1" class="video-js vjs-default-skin"
 										  controls preload="auto" width="540" height="364"
 										  poster="http://video-js.zencoder.com/oceans-clip.png"
 										  data-setup='{"example_option":true}'>
-										 <source src="http://video-js.zencoder.com/oceans-clip.mp4" type='video/mp4' />
-										 <source src="http://video-js.zencoder.com/oceans-clip.webm" type='video/webm' />
-										 <source src="http://video-js.zencoder.com/oceans-clip.ogv" type='video/ogg' />
+										 <source src="uploads/videos/<?php echo $video; ?>" type='video/wmv'>
 										 <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
 										</video>
 									</div>
@@ -140,30 +109,11 @@
 								<div class="panel-heading">
 									<strong>List of Videos</strong>
 								</div><!--- End panel heading -->
-									<div class="table-responsive">
-										<table class="table table-bordered">
-											<thead>
-												<tr>
-											     <th>Date</th>
-											     <th>Title</th>
-											   	</tr>
-											 </thead>
-											 <tbody>
-											   <tr>
-											     <td>John</td>
-											     <td>john@example.com</td>
-											   </tr>
-											   <tr>
-											     <td>Mary</td>
-											     <td>mary@example.com</td>
-											  </tr>
-											  <tr>
-											    <td>July</td>
-											    <td>july@example.com</td>
-											 </tr>
-										 </tbody>
-									</table>
-								</div><!--- End table fields-->	
+								<a href='video.php?video=<?php echo $videoURL; ?>'>
+									<ul class="list-group">
+									  <li class="list-group-item list-group-item-success"><?php echo $videoName; ?></li>
+									</ul>
+								</a>	
 							</div><!--- End panel-->	
 						</div>
 					</div><!--- End row -->
