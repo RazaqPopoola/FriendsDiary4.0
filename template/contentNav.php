@@ -11,6 +11,7 @@
 			<li><a href="imgGallery.php">Gallery</a></li>
 			<li><a href="music.php">Music</a></li>
 			<li><a href="video.php">Video</a></li>
+			<li><a href="contactList.php">Contact List</a></li>
 		</ul>
 		
 		<div class="pull-right">

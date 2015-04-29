@@ -6,7 +6,7 @@ class Gallery {
 	public function __construct() {
 		$this->path = __DIR__ . '\uploads\images';
 		$this->path = __DIR__ . '\uploads\musics';
-		$this->path = __DIR__ . '\uploads\videos';
+		//$this->path = __DIR__ . '\uploads\videos';
 	}
 	
 	public function setPath($path) {
@@ -42,7 +42,7 @@ class Gallery {
 			return (count($images)) ? $images : false;
 		}
 		
-		
+		/*
 		public function getVideos($extensions = array('mp4', 'avi', 'wmv')) {
 			$videos = $this->getDirectory($this->path);
 			
@@ -61,7 +61,7 @@ class Gallery {
 				
 		}
 			return (count($videos)) ? $videos : false;
-		}
+		}*/
 		
 		public function getMusics($extensions = array('mp3', 'wav')) {
 			$musics = $this->getDirectory($this->path);

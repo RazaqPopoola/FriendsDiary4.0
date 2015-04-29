@@ -4,7 +4,7 @@
 	securePage();
 	
 	$gallery = new Gallery();
-	$gallery->setPath('images');
+	$gallery->setPath('musics');
 	
 	$musics = $gallery->getMusics(array('mp3', 'wav'));
 
