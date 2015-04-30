@@ -87,20 +87,8 @@
 									FriendsDairy Video Player
 								</div>
 								<div class="panel-body">
-									<div >
-										<?php 
-											
-											$video = $_GET['video'];
-										
-										 ?>
-										<video id="example_video_1" class="video-js vjs-default-skin"
-										  controls preload="auto" width="540" height="364"
-										  poster="http://video-js.zencoder.com/oceans-clip.png"
-										  data-setup='{"example_option":true}'>
-										 <source src="uploads/videos/<?php echo $video; ?>" type='video/wmv'>
-										 <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
-										</video>
-									</div>
+								
+									
 								</div><!--- End panel body-->
 							</div><!--- End panel -->
 						</div><!--- End col -->
@@ -109,7 +97,7 @@
 								<div class="panel-heading">
 									<strong>List of Videos</strong>
 								</div><!--- End panel heading -->
-								<a href='video.php?video=<?php echo $videoURL; ?>'>
+								<a href='watchVideo.php?video=<?php echo $videoURL; ?>'>
 									<ul class="list-group">
 									  <li class="list-group-item list-group-item-success"><?php echo $videoName; ?></li>
 									</ul>

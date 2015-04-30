@@ -92,8 +92,20 @@
       								</div>
       	                 		</div>
 							</div><!--- End panel body -->
-							ahsasahg	
+							<form role="form">
+							  <div class="form-group">
+							    <label for="email">fName:</label>
+							  </div>
+							  <div class="form-group">
+							    <label for="pwd">lName:</label>
+							  </div>
+							  <div class="form-group">
+							    <label for="pwd">email:</label>
+							  </div>
+							</form>
 						</div>	<!--- End panel-->
+						
+						
 					</div><!--- End Col-->
 					<div class="col-md-5">
 						<div class="row">
