@@ -123,6 +123,9 @@
 								<?php } ?>
 							</div><!--- End panel body -->	
 						</div>	<!--- End panel-->
+						<a href="login.php">
+							<button type="button" class="btn btn-success btn-block">Login</button>
+						</a>
 					</div><!--- End Col-->
 				</div><!--- End Row -->
 			</div><!--- End container -->

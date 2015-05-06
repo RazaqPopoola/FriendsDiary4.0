@@ -19,7 +19,7 @@
 	}
 	
 	
-	$sql = "SELECT `diaryDate`, `title` FROM `diarys` WHERE `memberID` = $sessionMemberID AND YEAR(diaryDate) = YEAR(NOW()) AND MONTH(diaryDate)=MONTH(NOW())";
+	$sql = "SELECT `diaryDate`, `title` FROM `diarys` WHERE `memberID` = $sessionMemberID";
 	$result = mysql_query($sql);
 	if(!$result){
 		$errors[] = 'Could not connect and show your data.';
@@ -137,19 +137,21 @@
 										<?php
 											if(isset($_POST['saveDiary']) && empty($errors) === true){
 												
-													$insertData = array(
-															'memberID' 	 => $sessionMemberID,
-															'title'	 	=> $_POST['title'],
-															'diaryDate'		=>$_POST['diaryDate'],
-															'diaryNote'	 => $_POST['diaryNote']
+													$diaryData = array(
+															'memberID' 	 	=> $sessionMemberID,
+															'title'	 		=> $_POST['title'],
+															'diaryDate'		=> $_POST['diaryDate'],
+															'diaryNote'	 	=> $_POST['diaryNote']
 													);
 													
-													insertDiary($sessionMemberID, $insertData);
+													insertDiary($sessionMemberID, $diaryData);
 													
 												}else if (empty($errors) === false){
 													echo outputErrors($errors);
 												}
+												
 										?>
+										
 										<form action="" method="post">
 											
 											<div class="form-group">

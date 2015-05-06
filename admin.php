@@ -2,6 +2,16 @@
 	include('config/init.php');
 	securePage();
 	secureAdmin();
+	
+	
+	$sql = "SELECT `fName`, `lName`, `email` FROM `members`";
+	$result = mysql_query($sql);
+	if(!$result){
+		$errors[] = 'Could not connect and show your data.';
+	}else if(!mysql_num_rows($result)){
+		
+		$errors[] = 'There is no member detail in the database.';
+	}
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -23,8 +33,48 @@
 										<div class="panel-heading">
 											<strong>Admin Profile</strong>
 										</div><!--- End panel heading -->
-										
-										
+										<div class="panel-body">
+										<div class="thumbnail">
+											<?php
+												if(isset($_FILES['profile']) === true && isset($_POST['uploadA'])){
+													if(empty($_FILES['profile']['name']) === true){
+														echo 'please choose a file!';
+													}else{
+														
+														$allowed = array('jpg', 'jpeg', 'gif', 'png');
+														
+														$file_name = $_FILES['profile']['name'];
+														$bits = (explode('.', $file_name));
+														$file_extn = strtolower(end($bits));
+														$file_temp = $_FILES['profile']['tmp_name'];
+														
+														if(in_array($file_extn, $allowed) === true){
+															
+															changeProfileImage($sessionMemberID, $file_temp, $file_extn);
+															//header('Location: ' . $currentFile);
+															//exit();
+														}else{
+															
+															echo 'Incorrect file type. Allowed file type: ';
+															echo implode(', ', $allowed);
+														}
+													}
+												}
+											
+		      	                 				if(empty($memberData['profile']) === false){
+													echo '<img src="', $memberData['profile'],  '" alt="', $memberData['fName'], '\'s Profile Image">';
+		      	                 				}
+		      	                 			?>
+	      	                 			
+      	                 			 <div>
+        								<h5>Profile Picture</h5>
+        									<form action="" method="post" enctype="multipart/form-data">
+        										<input type="file" name="profile" value="Choose Picture"> <br/>
+        										<input type="submit" class="btn btn-success" role="button" name="uploadA" value"Upload">
+        									</form>
+      								</div>
+      	                 		</div>
+							</div><!--- End panel body -->
 									</div>	<!--- End panel-->
 					            </div>
 					        </div>
@@ -45,6 +95,7 @@
 											   </span>
 											 </div>
 										</form>
+										<div id="output"></div>
 										</div><!--- End panel body-->
 									</div><!--- End panel-->
 					            </div><!--- End inner col-->
@@ -91,18 +142,16 @@
 											      </tr>
 											    </thead>
 											    <tbody>
-											      <tr>
-											        <td>John</td>
-											        <td>john@example.com</td>
-											      </tr>
-											      <tr>
-											        <td>Mary</td>
-											        <td>mary@example.com</td>
-											      </tr>
-											      <tr>
-											        <td>July</td>
-											        <td>july@example.com</td>
-											      </tr>
+											      <?php 
+										       		if(is_resource($result)){
+											       		while($row = mysql_fetch_array($result)){
+												            echo '<tr>';
+												            echo '<td>'.$row['fName']. ' ' .$row['lName'].'</td>';
+												            echo '<td>'.$row['email'].'</td>';
+												            echo '</tr>';
+												        } 
+													}
+										          ?>
 											    </tbody>
 											  </table>
 										</div><!--- End table fields-->	

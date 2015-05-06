@@ -87,8 +87,9 @@
 									FriendsDairy Video Player
 								</div>
 								<div class="panel-body">
-								
-									
+								<?php
+									$query = mysql_query("SELECT `musicID`, `name`, `musicURL` FROM musictb");
+								?>	
 								</div><!--- End panel body-->
 							</div><!--- End panel -->
 						</div><!--- End col -->
@@ -97,11 +98,15 @@
 								<div class="panel-heading">
 									<strong>List of Videos</strong>
 								</div><!--- End panel heading -->
-								<a href='watchVideo.php?video=<?php echo $videoURL; ?>'>
-									<ul class="list-group">
-									  <li class="list-group-item list-group-item-success"><?php echo $videoName; ?></li>
-									</ul>
-								</a>	
+								<div class="panel-body">
+									<a href='watchVideo.php?video=<?php echo $videoURL; ?>'>
+										<ul class="list-group">
+										  <li class="list-group-item list-group-item-success">
+										  	<?php echo $videoName; ?>
+										  </li>
+										</ul>
+									</a>
+								</div><!--- End panel body-->		
 							</div><!--- End panel-->	
 						</div>
 					</div><!--- End row -->

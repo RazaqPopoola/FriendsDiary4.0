@@ -31,7 +31,7 @@
 
 		<script>
 			
-			var audioElement = $("#myTune")[0];
+			var audioElement = $("myTune")[0];
 			
 			$(".button-pause").on("click", function() {
 		    $(".button-pause").blur();

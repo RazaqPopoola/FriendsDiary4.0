@@ -14,7 +14,7 @@
 			<?php include('template/contentNav.php') ?>;
 			<div class="container">
 				<div class="row">
-					<div class="col-md-6">
+					<div class="col-md-6 col-md-offset-3">
 							<div class="panel panel-success">
 								<div class="panel-heading">
 									FriendsDairy Video Player
@@ -30,7 +30,7 @@
 										  controls preload="auto" width="540" height="364"
 										  poster="http://video-js.zencoder.com/oceans-clip.png"
 										  data-setup='{"example_option":true}'>
-										 <source src="uploads/videos/<?php echo $video; ?>" type='video/wmv'>
+										 <source src="uploads/videos/<?php echo $video; ?>" type='video/mp4'>
 										 <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
 										</video>
 									</div>

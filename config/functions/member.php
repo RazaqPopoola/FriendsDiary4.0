@@ -156,14 +156,27 @@
 		mysql_query("UPDATE `members` SET " . implode(', ', $update) . " WHERE `memberID` = $memberID");
 	}
 	
-	function insertDiary($memberID, $insertData) {
+	function insertDiary($memberID, $diaryData) {
 		
-		array_walk($insertData, 'arraySanitize');
+		array_walk($diaryData, 'arraySanitize');
 	
-		$fields = '`' . implode('`, `', array_keys($insertData)) . '`';
-		$data = '\'' . implode('\', \'', $insertData) . '\'';
-		
+		$fields = '`' . implode('`, `', array_keys($diaryData)) . '`';
+		$data = '\'' . implode('\', \'', $diaryData) . '\'';
+
 		mysql_query("INSERT INTO `diarys` ($fields) VALUES ($data)");
+	}
+	
+	
+	function insertContact($memberID, $contactData) {
+		
+		array_walk($contactData, 'arraySanitize');
+	
+		$fields = '`' . implode('`, `', array_keys($contactData)) . '`';
+		$data = '\'' . implode('\', \'', $contactData) . '\'';
+		
+		echo $fields;
+		
+		mysql_query("INSERT INTO `contactstb`  ($fields) VALUES ($data)");
 	}
 	
 	

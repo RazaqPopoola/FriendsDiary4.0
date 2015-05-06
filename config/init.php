@@ -8,6 +8,7 @@
 	require('functions/member.php');
 	require('functions/chat.php');
 	require('classes/Gallery.php');
+	
 
 	$currentFile = explode('/', $_SERVER['SCRIPT_NAME']);
 	$currentFile = end($currentFile);
