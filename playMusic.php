@@ -24,8 +24,13 @@
 											$music = $_GET['music'];
 										
 										 ?>
-										<audio src="uploads/musics/<?php echo $music; ?>" id="myTune">Music</audio>
+										<audio controls>
+											
+											<source src="uploads/musics/<?php echo $music; ?>" type="audio/mpeg">
+													
+										</audio>
 									
+									<!---
 										<div class="buttons">
 										    <button type="button" class="btn btn-default btn-lg button-skip-backward">
 										      <span class="glyphicon glyphicon-fast-backward"></span>
@@ -42,7 +47,7 @@
 										    <button type="button" class="btn btn-default btn-lg button-skip-forward">
 										      <span class="glyphicon glyphicon-fast-forward"></span>
 										    </button>
-										</div>
+										</div> -->
 									</div>
 								</div><!--- End panel body-->
 							</div><!--- End panel -->

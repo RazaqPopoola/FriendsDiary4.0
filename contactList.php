@@ -115,12 +115,12 @@
 									       		while($row = mysql_fetch_array($result)){
 									       			echo "<form action=change.php method=POST>";
 										            echo "<tr>";
-										            echo "<td>"."<input class=form-control type=text   name=conName value=".$row['conName']."</td>";
-										            echo "<td>"."<input class=form-control type=text name=phoneNo value=". $row['phoneNo']."</td>";
-										            echo "<td>"."<input class=form-control type=email name=conEmail value=".$row['conEmail']."</td>";
-													echo "<td>"."<input class=form-control type=text  name=address value=".$row['address']."</td>";
-													echo "<td>"."<input class=form-control type=submit name=update value=update />"."</td>";
-													echo "<td>"."<input class=form-control type=submit name=delete value=delete />"."</td>";
+										            echo "<td>"."<input class=form-control type=text   name=conName value=".$row['conName'].">"."</td>";
+										            echo "<td>"."<input class=form-control type=number name=phoneNo value=". $row['phoneNo'].">"."</td>";
+										            echo "<td>"."<input class=form-control type=email name=conEmail value=".$row['conEmail'].">"."</td>";
+													echo "<td>"."<input class=form-control type=text  name=address value=".$row['address'].">"."</td>";
+													echo "<td>"."<input class=\"btn btn-success\" type=submit name=update value=update />"."</td>";
+													echo "<td>"."<input class=\"btn btn-success\" type=submit name=delete value=delete />"."</td>";
 										            echo "</tr>";
 										            echo "</form>";
 										        } 

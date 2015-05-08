@@ -74,13 +74,13 @@
 							'username' => $_POST['username'],
 							'password' => $_POST['password'],
 							'email' => $_POST['email'],
-							'emailCode' => md5($_POST['emailCode'] + microtime),
+							'emailCode' => md5($_POST['email'] + microtime()),
 							'fName' => $_POST['fName'],
 							'lName' => $_POST['lName']
 						);
 						
 						registerMember($registerData);
-						header('Location: register.php?success');
+						//header('Location: index.php?success');
 					}else if(empty($errors) === false){
 						
 						echo outputErrors($errors);

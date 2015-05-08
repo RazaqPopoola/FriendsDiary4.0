@@ -1,6 +1,18 @@
 <?php
 	include('config/init.php');
-	securePage();								
+	securePage();	
+	
+	
+	$sql = "SELECT  `outpouringNote` FROM `outpourings` WHERE `memberID` = $sessionMemberID AND `outpouringDate` IN (SELECT MAX(`outpouringDate`) FROM `outpourings`)";
+	$re = mysql_query($sql);
+	$row = mysql_fetch_assoc($re);
+	
+	if(!$re){
+		$errors[] = 'Could not connect and show your data.';
+	}else if(!mysql_num_rows($re)){
+		
+		$errors[] = 'There is no diary record in the database.';
+	}						
 ?>
 
 
@@ -50,8 +62,37 @@
 					            </div>
 					            <div class="col-md-7">
 					            	<div class="panel panel-success">
-					            		<div class="papanel-body">
-					            				<textarea name="outpouring" rows="16" class="form-control">Mind Outpouring?</textarea>
+					            		<div class="panel-body">
+					            			<?php
+												if(isset($_POST['outpouring']) && empty($errors) === true){
+													
+														$outpouringData = array(
+																'memberID' 	 	=> $sessionMemberID,
+																'outpouringNote' => $_POST['outpouringNote'],
+																'outpouringDate' => date('Y-m-d H:i:s')
+														);
+														
+														insertOutpouring($sessionMemberID, $outpouringData);
+														
+													}else if (empty($errors) === false){
+														echo outputErrors($errors);
+													}	
+											?>
+											<form action="" method="post">
+					            				<div class="form-group">
+					            				<textarea  readonly name="dispalyO" rows="6" class="form-control" placeholder="Current Mind Outpouring"><?php echo $row['outpouringNote']; ?></textarea>
+					            				<div class="input-group">
+										    	<input type="text" name="comment" class="form-control"  autocomplete="off" placeholder="Comment">
+												    <span class="input-group-btn">
+												    <button type="submit" class="btn btn-success">Comment</button>
+												    </span>
+											  	</div>
+						            			</div>
+						            			<div class="form-group">
+						            				<textarea rows="3" name="outpouringNote" class="form-control" placeholder="Mind Outpouring?"></textarea>
+						            				<button type="submit" name="outpouring" class="btn btn-success">Save Outpouring</button>
+						            			</div>
+						            		</form>	
 					            		</div>
 					            	</div>
 					            </div>

@@ -1,27 +1,25 @@
 <?php
 
-	include('init.php');
+	include_once('config/init.php'); 
 	
-	if (isset($_POST['delete']))
-	{
-		$contactID=$_POST['contactID'];
-		$sql = "DELETE FROM contactstb WHERE contactID='$contactID'";
+	if (isset($_POST['delete'])){
+		
+		$del = $_POST['contactID'];
+		$sql = "DELETE FROM contactstb WHERE contactID = $del";
 
-		header('Location: contactlist.php');
+		header('Location: contactList.php');
 		exit();
 	}
 	
 	
 	
 	
-	if (isset($_POST['update']))
-	{	
+	if (isset($_POST['update'])){	
 
-		//$contactID = mysqli_real_escape_string($_POST['contactID']);
-		$names = mysqli_real_escape_string($_POST['conName']);
-		$phoneNo = mysqli_real_escape_string($_POST['phoneNo']);
-		$email = mysqli_real_escape_string($_POST['conEmail']);
-		$address = mysqli_real_escape_string($_POST['address']);
+		$conName = sanitize($_POST['conName']);
+		$phoneNo = sanitize($_POST['phoneNo']);
+		$conEmail = sanitize($_POST['conEmail']);
+		$address = sanitize($_POST['address']);
 		
 		$sql = "UPDATE contactstb SET
 		conName='$conName',
@@ -29,10 +27,10 @@
 		conEmail='$conEmail',
 		address='$address'";
 		
-		if (!mysqli_query($sql))
+		if (!mysql_query($sql))
 		{
-			$error = 'Error updating submitted Contact';
-			include 'error.html.php';
+			$errors = 'Error updating submitted Contact';
+			echo outputErrors($errors);
 			exit();
 		}
 		

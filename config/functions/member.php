@@ -174,11 +174,20 @@
 		$fields = '`' . implode('`, `', array_keys($contactData)) . '`';
 		$data = '\'' . implode('\', \'', $contactData) . '\'';
 		
-		echo $fields;
 		
 		mysql_query("INSERT INTO `contactstb`  ($fields) VALUES ($data)");
 	}
 	
+	function insertOutpouring($memberID, $outpouringData) {
+
+		array_walk($outpouringData, 'arraySanitize');
+	
+		$fields = '`' . implode('`, `', array_keys($outpouringData)) . '`';
+		$data = '\'' . implode('\', \'', $outpouringData) . '\'';
+		
+
+		mysql_query("INSERT INTO `outpourings`  ($fields) VALUES ($data)");
+	}
 	
 	
 	function changePassword($memberID, $password) {
