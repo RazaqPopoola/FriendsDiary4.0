@@ -42,10 +42,7 @@
 				exit();	
 			}
 		}
-	}else {
-		$errors[] = 'No data received';
 	}
-
 ?>
 
 
