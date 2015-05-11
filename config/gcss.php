@@ -25,7 +25,7 @@
 		
 		float: left;
 		background: #fff;
-		width: 19%;
+		width: 18%;
 		margin: 1%;
 		padding: 2%;
 		padding-bottom: 5%;

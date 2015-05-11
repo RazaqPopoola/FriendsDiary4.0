@@ -8,7 +8,7 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Login</title>
+		<title>Image Uploads</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">	
 			<?php include('config/css.php'); ?>
 			<?php include('config/js.php'); ?>
@@ -27,7 +27,7 @@
 								<strong>Image Upload</strong>
 							</div><!--- End panel heading -->
 							<div class="panel-body">	
-								
+							<?php echo outputErrors($errors); ?>
 								<form action="imgUpload.php" method="post" enctype="multipart/form-data">
 									<div class="form-group">
 										<input type="file" class="form-control" name="files[]"  multiple>

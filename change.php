@@ -2,10 +2,15 @@
 
 	include_once('config/init.php'); 
 	
-	if (isset($_POST['delete'])){
+	if(isset($_POST['delete'])){
 		
-		$del = $_POST['contactID'];
-		$sql = "DELETE FROM contactstb WHERE contactID = $del";
+		$contactID = $_POST[contactID];
+		$sql = "DELETE FROM contactstb WHERE contactID = $contactID";
+		
+		if(!mysql_query($sql)){
+			$errors[] = 'Error deleting the Contact from the Contact List';
+		}
+		
 
 		header('Location: contactList.php');
 		exit();
@@ -14,7 +19,7 @@
 	
 	
 	
-	if (isset($_POST['update'])){	
+	if(isset($_POST['update'])){	
 
 		$conName = sanitize($_POST['conName']);
 		$phoneNo = sanitize($_POST['phoneNo']);

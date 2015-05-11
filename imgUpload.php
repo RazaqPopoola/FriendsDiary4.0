@@ -1,12 +1,12 @@
 <?php
-	
+	include_once('config/init.php'); 
 
 	if(!empty($_FILES['files']['name'][0])){
 		
 		$files = $_FILES['files'];
 		
 		$uploaded = array();
-		$failed = array();
+		$errors = array();
 		
 		$allowed = array('jpg', 'png', 'jpeg', 'gif');
 		
@@ -41,30 +41,30 @@
 						
 						}else{
 							
-							$failed[$position] = "[{$file_name}] failed to upload.";
+							$errors[] = "[{$file_name}] failed to upload.";
 						}
 					}else{
 						
-						$failed[$position] = "[{$file_name}] is too large. Maximum size is 2 megabytes!";
+						$errors[] = "[{$file_name}] is too large. Maximum size is 2 megabytes!";
 					}
 				}else{
 					
-					$failed[$position] = "[{$file_name}] failed to upload {$file_error}.";
+					$errors[] = "[{$file_name}] failed to upload {$file_error}.";
 				}
 			}else{
 			
-				$failed[$position] = "[{$file_name}] file extension '{$file_ext}'  is not allowed.";
+				$errors[] = "[{$file_name}] file extension '{$file_ext}'  is not allowed.";
 			}
 		}
 	}
 	
-	if(!empty($uploaded)){
-		print_r($uploaded);
-	}
-	
-	if(!empty($failed)){
-		print_r($failed);
-		
-	}
+																
+								if(!empty($errors)){
+									
+									
+									header('Location: upload.php');
+									echo outputErrors($errors); 
+									
+								}
 
 ?>

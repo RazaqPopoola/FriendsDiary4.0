@@ -21,6 +21,9 @@
 	<body>
 		<?php include('template/contentNav.php') ?>;
 		<div class="gcontainer">
+			<a href="upload.php">Upload Image</a>
+		</div>
+		<div class="gcontainer">
 		<?php if($images): ?>
 			<div class="gallery cf">
 				<?php foreach($images as $image): ?>

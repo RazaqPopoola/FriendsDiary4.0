@@ -60,7 +60,7 @@
 												
 												move_uploaded_file($tmp, 'uploads/videos/'.$randomName.'.'.$type);
 												
-												mysql_query("INSERT INTO `videostb` VALUES('', '$name', '$randomName.$type')");
+												mysql_query("INSERT INTO `videostb` VALUES('', '$name', $randomName.$type')");
 												echo  'Successfully Uploaded! ';
 	
 											
@@ -73,6 +73,9 @@
 									
 									<div class="form-group">
 										<input type="file" class="form-control" name="video">
+									</div>
+									<div class="form-group">
+										<input type="text" class="form-control" name="description" placeholder="Discription">
 									</div>
 									<div class="form-group">
 										<input type="submit" class="btn btn-success" name="uploadV" value="Upload">

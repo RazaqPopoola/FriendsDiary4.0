@@ -75,6 +75,21 @@
       								</div>
       	                 		</div>
 							</div><!--- End panel body -->
+								<panel class="panel panel-default">
+									<div class="panel-body">
+										<form role="form">
+										  <div class="form-group">
+										    <label for="email">fName: <?php echo $memberData['fName']; ?></label>
+										  </div>
+										  <div class="form-group">
+										    <label for="pwd">lName: <?php echo $memberData['lName']; ?></label>
+										  </div>
+										  <div class="form-group">
+										    <label for="pwd">email: <?php echo $memberData['email']; ?></label>
+										  </div>
+										</form>
+									</div>
+								</panel>
 									</div>	<!--- End panel-->
 					            </div>
 					        </div>
