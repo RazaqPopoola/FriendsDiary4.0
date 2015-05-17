@@ -65,10 +65,13 @@
 		width: 100%;
 	}
 	
+	
+	
 	.thumbnails{
 		width:171 px;
 		height:180 px;
 	}
+
 	
 	.cf:before,
 	.cf:after{

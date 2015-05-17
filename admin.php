@@ -12,6 +12,7 @@
 		
 		$errors[] = 'There is no member detail in the database.';
 	}
+	
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -122,19 +123,48 @@
 											<strong>Email Member</strong>
 										</div><!--- End panel heading -->
 										<div class="panel-body">
+											<?php
+												if (empty($_POST) === false) {
+													
+													if (empty($_POST['ename']) === true) {
+														$errors[] = 'Name is required';
+													}
+												
+													if (empty($_POST['email']) === true) {
+														$errors[] = 'Email is required';
+													}
+													if (empty($_POST['subject']) === true) {
+														$errors[] = 'Subject is required';
+													}
+													if (empty($_POST['message']) === true) {
+														$errors[] = 'Message is required';
+													}
+													if (empty($errors) === false) {
+														echo outputErrors($errors);
+													} else {
+														
+														mailMember($_POST['ename'], $_POST['email'], $_POST['subject'], $_POST['mesage']);
+														echo "Mail Sent sucessfully";
+													}
+													
+												}
+												?>
 											<form action="" method="post">
 												<div class="form-group">
-													<input type="text" class="form-control" name='title' placeholder="Enter Diary Title">
+													<input type="text" class="form-control" name='ename' placeholder="To Name">
 												</div>
 												<div class="form-group">
-													<input type="date" class="form-control" name='diaryDate' >
+													<input type="text" class="form-control" name='email' placeholder="To Email">
+												</div>
+												<div class="form-group">
+													<input type="text" class="form-control" name='subject' placeholder="Subject">
 												</div>
 												
 												<div class="form-group">
-													<textarea class="form-control" rows="10"  name="diaryNote" placeholder="Enter Daily Diary Note"></textarea>
+													<textarea class="form-control" rows="10"  name="message" placeholder="Message"></textarea>
 												</div>
 			
-												<input type="submit" class="btn btn-success" name="saveDiary" value="save">
+												<input type="submit" class="btn btn-success" name="sendEmail" value="Send">
 											</form>
 										</div><!--- End panel body -->	
 									</div>	<!--- End panel-->

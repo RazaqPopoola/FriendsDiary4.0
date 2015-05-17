@@ -4,13 +4,15 @@
 	include('config/init.php'); 
 	securePage();
 	
-	$query = mysql_query("SELECT `musicID`, `name`, `musicURL` FROM musictb");
-	while($run = mysql_fetch_array($query)){
+	$query = "SELECT `musicID`, `name`, `musicURL` FROM musictb";
+	$result = mysql_query($query);
+	
+	if(!$result){
 		
-		$musicID = $run['musicID'];
-		$musicName = $run['name'];
-		$musicURL = $run['musicURL'];
+		$errors[] = 'Could not connect and show your data.';
+	}else if(!mysql_num_rows($result)){
 		
+		$errors[] = 'There is no diary record in the database.';
 	}
 ?>
 
@@ -29,7 +31,7 @@
 				<div class="container">
 					
 					<div class="row">
-						<div class="col-md-3">
+						<div class="col-md-4">
 							<div class="panel panel-success">
 								<div class="panel-heading">
 									<strong>Video Music</strong>
@@ -56,7 +58,7 @@
 													
 													move_uploaded_file($tmp, 'uploads/musics/'.$randomName.'.'.$type);
 													
-													mysql_query("INSERT INTO `musictb` VALUES('', '$name', '$randomName.$type')");
+													mysql_query("INSERT INTO `musictb` VALUES('', '$sessionMemberID', '$name', '$randomName.$type')");
 													echo  'Successfully Uploaded! ';
 		
 												
@@ -77,34 +79,46 @@
 							</div><!--- End panel body -->	
 						</div>	<!--- End panel-->
 						</div>
-						<div class="col-md-5">
+						<div class="col-md-8">
 							<div class="panel panel-success">
 								<div class="panel-heading">
-									FriendsDairy Audio Player
+									FriendsDairy Audio 
 								</div>
 								<div class="panel-body">
-					
-									
+									<?php
+										if (empty($errors) === false){
+												echo outputErrors($errors);
+											}
+									?>
+									<div class="table-responsive">
+									<table class="table">
+								        <thead>
+								          <tr>
+								            <th>Name</th>
+								            <th>Music Link</th>
+								             <th>Delete</th>
+								          </tr>
+								        </thead>
+								        <tbody>
+								       	<?php 
+								       		if(is_resource($result)){
+									       		while($row = mysql_fetch_array($result)){
+										            echo '<tr>';
+										            echo '<td>'.$row['name'].'</td>';
+										            echo '<td><a href="playMusic.php?music='.$row['musicURL'].'">'.$row['name'].'</a></td>';
+													echo '<td>'.'<input class=\'btn btn-success\' type=submit name=delete value=delete />'.'</td>';
+										            echo '</tr>';
+												}
+												
+											}
+								          ?>
+								        </tbody>
+							      </table>
+								</div><!--- End table div-->
 					
 								</div><!--- End panel body-->
 							</div><!--- End panel -->
 						</div><!--- End col -->
-						<div class="col-md-4">
-							<div class="panel panel-success">
-								<div class="panel-heading">
-									<strong>Music List</strong>
-								</div>
-								<div class="panel-body">
-									<a href='playMusic.php?music=<?php echo $musicURL; ?>'>
-									<ul class="list-group">
-									  <li class="list-group-item list-group-item-success">
-									  	<?php echo $musicName; ?>
-									  </li>
-									</ul>
-								</a>
-								</div><!--- End panel body-->	
-							</div><!--- End panel -->
-						</div>
 					</div><!--- End row -->
 					
 				</div><!--- End container -->

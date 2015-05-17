@@ -1,7 +1,7 @@
 <?php 
 	include('config/init.php');
-	//securePage();
-	//secureAdmin();
+	securePage();
+	secureAdmin();
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -55,7 +55,7 @@
 											<textarea class="form-control" rows="10" name="body" placeholder="Body"></textarea>
 										</div>
 	
-										<input type="submit" class="btn btn-success" value="Send">
+										<input type="submit" class="btn btn-success" name="send" value="Send">
 									</form>
 							</div><!--- End panel body -->		
 						</div>	<!--- End panel-->

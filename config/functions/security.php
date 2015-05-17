@@ -8,7 +8,7 @@
 	
 	function email($to, $subject, $body) {
 		
-		mail($to, $subject, $body, 'From: razaqpopoola@gmail.com');
+		mail($to, $subject, $body, 'From: Admin@friends-diary.com');
 	}
 	
 	function securePage(){

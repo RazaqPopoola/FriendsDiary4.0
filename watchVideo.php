@@ -20,7 +20,7 @@
 									FriendsDairy Video Player
 								</div>
 								<div class="panel-body">
-									<div >
+									<div>
 										<?php 
 											
 											$video = $_GET['video'];

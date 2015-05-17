@@ -19,9 +19,10 @@
 	}
 	
 	
-	$sql = "SELECT `diaryDate`, `title` FROM `diarys` WHERE `memberID` = $sessionMemberID";
+	$sql = "SELECT * FROM `diarys` WHERE `memberID` = $sessionMemberID";
 	$result = mysql_query($sql);
 	if(!$result){
+		
 		$errors[] = 'Could not connect and show your data.';
 	}else if(!mysql_num_rows($result)){
 		
@@ -121,12 +122,13 @@
 					            		<div class="panel-body"> 
 										 <form action="" method="post">
 											 <div class="input-group">
-											   <input type="text" name="searchd" class="form-control" autocomplete="off" placeholder="Search for Diary" onkeydown=";">
+											   <input type="text" name="search" class="form-control" autocomplete="off" placeholder="Search for Diary" onkeydown="searchq()";>
 											    <span class="input-group-btn">
 											   		<button type="submit" class="btn btn-success">Submit</button>
 											   </span>
 											 </div>
 										</form>
+										<div id="output"></div>
 										</div><!--- End panel body-->
 									</div><!--- End panel-->
 					            </div><!--- End inner col-->
@@ -159,7 +161,7 @@
 										<form action="" method="post">
 											
 											<div class="form-group">
-												<input type="text" class="form-control" name='title' placeholder="Enter Diary Title">
+												<input type="text" class="form-control" name='title' placeholder="Enter Diary Title" oncliked=show();>
 											</div>
 											<div class="form-group">
 												<input type="date" class="form-control" name='diaryDate' >
@@ -219,3 +221,4 @@
 		<?php include('template/footer.php')?>
 	</footer>	
 </html>
+\

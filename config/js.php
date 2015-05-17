@@ -26,7 +26,19 @@
 			}
 		
 		</script>
-
+		<script>
+			$(document).ready(function displatTxt(){
+				
+				$("td").click(function(){
+					
+					//$(this).css("background-color", "yellow");
+					
+					alert("yessssssssssssss");
+					
+				});
+			});
+			
+		</script>
 
 
 		<script>
